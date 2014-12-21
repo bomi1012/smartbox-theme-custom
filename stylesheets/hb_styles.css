@@ -1,0 +1,285 @@
+/* 
+    Document   : hb_styles
+    Created on : Jun 21, 2013, 6:03:22 PM
+    Author     : Mihon
+    Description: Our custom styles
+*/
+@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
+
+div#blockRigthOben{
+    font-size: 14px;
+    border-left-style: dashed;
+    border-left-width: thin;
+    padding-left: 20px;
+    margin-left: 30px;
+    border : 0;
+}
+
+ul#blockRigthBlack{
+    font-size: 18px;
+    padding-top: 60px;
+    padding-left: 10px;
+}
+ul#blockRigthBlack h3{
+    padding-bottom: 15px;
+}
+
+div#blockRigthOben h4{
+    color: orange;
+}
+
+i.icon_right{
+    padding-left: 8px;
+}
+
+p.no_li{
+    line-height: 1.5em;
+    font-size: 0.9em;
+}
+
+h4.infokasten_green{
+    background:#E3FF4A; 
+    display: inline; 
+    line-height: 3;
+    padding: 1px;
+}
+
+a.infokasten{
+    color: #FFA500;
+}
+
+h4.infokasten:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transition: opacity 1s linear;
+}
+
+.super-hero-unit {
+    position: relative;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+    display: block;
+    margin: auto 0;
+}
+
+ul.bycategories {
+    margin: 0;
+    padding: 0;
+}
+ul.bycategories li {
+    list-style: none; 
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+}
+ul.bycategories li a {
+    list-style: none; 
+    list-style-type: none;
+    margin: 0 20px 15px 0; 
+    float: left; 
+    background: #eee; 
+    color: #464646; 
+    padding: 5px 10px;
+    border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+}
+ul.bycategories li a:hover{
+    text-decoration: none; 
+    background: #ff6200; 
+    color: #fff;
+}
+.clear{clear: both;}
+
+/*Tagging cloud*/
+
+.tagcloudbody {
+width:800px;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#666666;
+border:solid 1px #333333;
+padding:5px;
+text-align:justify;
+}
+
+.tagcloudbody a {
+text-decoration:none;
+color:#333366;
+}
+
+.tagcloudThema {
+font-weight:bold;
+font-size:16px;
+margin-bottom: 10px;
+}
+
+.tag1 {
+font-size:26px;
+}
+.tag2 {
+font-size:16px;
+}
+.tag3 {
+font-size:13px;
+}
+.tag4 {
+font-size:20px;
+}
+.tag5 {
+font-size:9px;
+}
+
+.img_100x100_custom_mb {
+    width: 100px;
+    height: 100px;
+}
+
+.img_78x78_custom_mb {
+    width: 78px;
+    height: 78px;
+}
+
+/* 
+ * https://trello.com/c/zdR1moHs/78-bug-title
+ */
+@media (max-width: 320px){
+    .super {
+        font-size: 16px;
+    }
+}
+@media (min-width: 321px) and (max-width: 480px){
+    .super {
+        font-size: 24px;
+    }
+}
+@media (min-width: 481px) and (max-width: 768px){
+    .super {
+        font-size: 34px;
+    }
+}
+@media (min-width: 769px) and (max-width: 978px){
+    .super {
+        font-size: 46px;
+    }
+}
+@media (min-width: 979px) and (max-width: 1200px){
+    .super {
+        font-size: 60px;
+    }
+}
+
+/**
+ * https://trello.com/c/CdTn2B6Y/108-homepage-link-unterstreichen-beim-mousehover
+ */
+a:hover {
+    text-decoration: underline;
+}
+a:hover i {
+    text-decoration: none;
+}
+
+/**
+ * https://trello.com/c/wZcXbqun/159-text
+ */
+div.post-body .content-text p, 
+div.post-body .content-text h2,
+section.content-text-section div p,
+section.content-text-section div h2{
+    padding-left: 30%;
+    margin-bottom: 35px;
+    margin-right: 5%;
+}
+
+div.post-body .content-text h2,
+section.content-text-section div h2 {
+    font-weight: 100;
+    line-height: 1.4em;
+    margin: 75px 0px 15px 0px;
+}
+
+div.post-body .content-text blockquote,
+section.content-text-section div blockquote{
+    color: #c09853;
+    float: left;
+    width: 25%;
+    margin-top: -60px;
+    border-left: 3px solid #c09853;
+    font-size: 18px;
+    line-height: 1.4em;
+}
+
+.archive-body  {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dcdce1;
+}
+
+blockquote p {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+@media (max-width: 1000px) {
+    div.post-body .content-text blockquote,
+    section.content-text-section div blockquote  {
+        display: none;   
+    }
+    
+    div.post-body .content-text p, 
+    div.post-body .content-text h2,
+    section.content-text-section div p,
+    section.content-text-section div h2 {
+        padding-left: 5%;
+    }
+}
+blockquote.margin_bottom_25px_mb {
+    margin-bottom: 25px;
+}
+.hb_video_archive_single {
+    margin-top: 25px;
+}
+.widget_wpb_widget_custom_search form {
+margin: 0;
+}
+
+#toTop {
+	display:none;
+	text-decoration:none;
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	overflow:hidden;
+	width:51px;
+	height:51px;
+	border:none;
+	text-indent:100%;
+	background:url("../images/totop.png") no-repeat left top;
+}
+
+#toTopHover {
+	background:url("../images/totop.png") no-repeat left -51px;
+	width:51px;
+	height:51px;
+	display:block;
+	overflow:hidden;
+	float:left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+
+#toTop:active, #toTop:focus {
+	outline:none;
+}
+
+.padding_a_language {
+    padding: 0px 10px;
+}
+
+.hb_cloud_style {
+    font-size: 10pt !important;
+}
+
+.hb_taxonomy_desc {
+    margin-bottom: 45px;
+}
