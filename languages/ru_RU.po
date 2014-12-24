@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Smartbox Frontend Translation File 1.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-18 15:09+0300\n"
-"PO-Revision-Date: 2014-12-15 21:27+0100\n"
+"PO-Revision-Date: 2014-12-24 09:46+0100\n"
 "Last-Translator: Mihail <mihon_82@rambler.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru_RU\n"
@@ -108,7 +108,7 @@ msgstr ""
 
 #: build/inc/frontend.php:747
 msgid "add your comment here"
-msgstr "Добавь здесь свой комментарий"
+msgstr "Ваш комментарий"
 
 #: build/inc/frontend.php:748
 #, php-format
@@ -126,7 +126,7 @@ msgstr ""
 
 #: build/inc/frontend.php:755
 msgid "Add your comment"
-msgstr "Добавь свой комментарий"
+msgstr "Добавьте свой комментарий"
 
 #: build/inc/frontend.php:756
 msgid "Leave a Reply"
