@@ -106,6 +106,78 @@ $args = array(
 
 register_post_type('oxy_video', $args);
 
+/* --------------------- video church recordings ------------------------*/
+$labels = array(
+    'name'               => __('Video Church', THEME_ADMIN_TD),
+    'singular_name'      => __('Video Church',  THEME_ADMIN_TD),
+    'add_new'            => __('Add New',  THEME_ADMIN_TD),
+    'add_new_item'       => __('Add New Video Item',  THEME_ADMIN_TD),
+    'edit_item'          => __('Edit Video Item',  THEME_ADMIN_TD),
+    'new_item'           => __('New Video Item',  THEME_ADMIN_TD),
+    'all_items'          => __('All Video Items',  THEME_ADMIN_TD),
+    'view_item'          => __('View Video Item',  THEME_ADMIN_TD),
+    'search_items'       => __('Search Video Items',  THEME_ADMIN_TD),
+    'not_found'          => __('No Video Item found',  THEME_ADMIN_TD),
+    'not_found_in_trash' => __('No Video Item found in Trash', THEME_ADMIN_TD),
+    'menu_name'          => __('Video Church',  THEME_ADMIN_TD)
+);
+
+$capabilities = array(
+    'publish_posts' => 'publish_video_church',
+    'edit_posts' => 'edit_videos_church',
+    'edit_others_posts' => 'edit_others_video_church',
+    'edit_published_posts' => 'edit_published_video_church',
+    'edit_private_posts' => 'edit_private_videos_church',
+    'delete_posts' => 'delete_videos_church',
+    'delete_private_posts' => 'delete_private_videos_church',
+    'delete_published_posts' => 'delete_published_videos_church',
+    'delete_others_posts' => 'delete_others_videos_church',
+    'read_private_posts' => 'read_private_videos_church',
+    'edit_post' => 'edit_video_church',
+    'delete_post' => 'delete_video_church',
+    'read_post' => 'read_video_church'
+);
+
+$args = array(  
+    'labels'             => $labels,
+    'public'             => true,
+    'publicly_queryable' => true,
+    'show_ui'            => true,
+    'show_in_menu'       => true,
+    'query_var'          => true,
+    'capability_type'    => 'post',
+    'capabilities'       => $capabilities,
+    'has_archive'        => true,
+    'hierarchical'       => false,
+    'menu_position'      => null,
+    'menu_icon'          => ADMIN_ASSETS_URI . 'images/staff.png',
+    'supports'           => array( 'title', 'editor', 'thumbnail', 'post-formats' ),
+    'rewrite'            => false,
+);
+
+register_post_type('oxy_video_church', $args);
+// Register video church taxonomy
+    $labels = array(
+        'name'          => __( 'Categories', THEME_ADMIN_TD ),
+        'singular_name' => __( 'Category', THEME_ADMIN_TD ),
+        'search_items'  =>  __( 'Search Categories', THEME_ADMIN_TD ),
+        'all_items'     => __( 'All Categories', THEME_ADMIN_TD ),
+        'edit_item'     => __( 'Edit Category', THEME_ADMIN_TD),
+        'update_item'   => __( 'Update Category', THEME_ADMIN_TD),
+        'add_new_item'  => __( 'Add New Category', THEME_ADMIN_TD),
+        'new_item_name' => __( 'New Category Name', THEME_ADMIN_TD)
+    );
+
+    register_taxonomy(
+        'oxy_video_church_category',
+        'oxy_video_church',
+        array(
+            'hierarchical' => true,
+            'labels'       => $labels,
+            'show_ui'      => true,
+            'query_var'    => true,
+        )
+    );
 
 /* --------------------- audio ------------------------*/
 $labels = array(
@@ -187,6 +259,20 @@ $result = add_role(
         'edit_video' => true,
         'delete_video' => true,
         'read_video' => true,
+        
+        'publish_video_church' => true,
+        'edit_videos_church' => true,
+        'edit_others_videos_church' => true,
+        'edit_published_videos_church' => true,
+        'edit_private_videos_church' => true,
+        'delete_videos_church' => true,
+        'delete_private_videos_church' => true,
+        'delete_published_videos_church' => true,
+        'delete_others_videos_church' => true,
+        'read_private_videos_church' => true,
+        'edit_video_church' => true,
+        'delete_video_church' => true,
+        'read_vide_church' => true,
         
         'publish_text' => true,
         'edit_texts' => true,

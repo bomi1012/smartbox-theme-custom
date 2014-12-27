@@ -214,4 +214,35 @@ function hb_get_linkformat($post_format) {
         return get_permalink();
     }
 }
+
+
+/**
+ * @package HELPER
+ * @description provides script for jw player for video church post
+ * @param post of type oxy_video_church $post
+ * @return string
+ */
+function hb_get_jw_player_for_video_curch($post){
+    $rtmp_url = get_field('rtmp_url', $post->ID);
+    $smil_url = get_field('smil_url', $post->ID);
+    $m3u8_url = get_field('m3u8_url', $post->ID);
+    $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
+    $output .= "<center><div id=\"streamplay\">Loading the player...</div>&nbsp;</center>";
+    $output .= "<script type=\"text/javascript\">jwplayer(\"streamplay\").setup({\"sources\":";
+    $add_comma = false;
+    if(!empty($rtmp_url)){
+        $output .= "[{ \"file\": \"".$rtmp_url."\" }],   height: 460, width: 840}";
+        $add_comma = true;
+    }
+    if(!empty($smil_url)){
+        if($add_comma) $output .= ",";
+        $output .= "[{ \"file\": \"".$smil_url."\" }],   height: 460, width: 840}";
+    }
+    if(!empty($m3u8_url)){
+        if($add_comma) $output .= ",";
+        $output .= "[{ \"file\": \"".$m3u8_url."\" }],   height: 460, width: 840}";
+    }
+    $output .= ");</script>";
+    return $output;
+}
 ?>
