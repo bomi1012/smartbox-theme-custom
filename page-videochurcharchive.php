@@ -48,7 +48,10 @@ if (is_page()) {
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
-                <?php the_post(); the_content(); ?>
+                <?php
+                    //show content of page which could be maintained in admin panel but not if it is archive query
+                    if(!is_archive()){the_post(); the_content();} 
+                ?>
             </div>        
         </div>
 </section>

@@ -322,7 +322,9 @@ function template_chooser($template) {
     return locate_template('page-videoarchive.php');  //  redirect to page-videos.php
   }elseif(($wp_query->is_search or $wp_query->is_archive) && $post_type == 'oxy_content' ){
     return locate_template('page-archive.php');  //  redirect to page-texts.php
-  }    
+  }elseif(($wp_query->is_search or $wp_query->is_archive) && $post_type == 'oxy_video_church' ){
+    return locate_template('page-videochurcharchive.php');  //  page-videochurcharchive.php'
+  }      
   return $template;   
 }
 add_filter('template_include', 'template_chooser');

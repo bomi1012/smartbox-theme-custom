@@ -56,9 +56,12 @@ function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type, $taxonomy_na
             if ($post_type == 'oxy_video') {
                 $link_all = home_url() . "/videoarchive";
                 $title = __('Show all videos', THEME_FRONT_TD) . " (" . $count_all . ") ";
-            } elseif (oxy_content) {
+            } elseif ($post_type == 'oxy_content') {
                 $title = __('Show all articles', THEME_FRONT_TD) . " (" . $count_all . ") ";
                 $link_all = home_url() . "/archive";
+            } elseif ($post_type == 'oxy_video_church') {
+                $title = __('Show all videos', THEME_FRONT_TD) . " (" . $count_all . ") ";
+                $link_all = home_url() . "/videochurcharchive";
             }
          
             $output = hb_ui_list_wrapper(array(
