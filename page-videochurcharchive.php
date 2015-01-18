@@ -23,28 +23,35 @@ if (is_day()) {
     //$title = __('Year', THEME_FRONT_TD);
     $title = get_the_date('Y');
 } elseif (is_search()) {
-    $title = __('Search', THEME_FRONT_TD) . ': ' . '<span class="lighter">' . get_search_query() . '</span>'; 
-}else {
+    $title = __('Search', THEME_FRONT_TD) . ': ' . '<span class="lighter">' . get_search_query() . '</span>';
+} else {
     $term = $wp_query->queried_object;
     $title = $term->name;
-    if ($term->slug == "god") 
+    if ($term->slug == "god")
         $title = "";
 }
 
-if(!empty($term->slug))
+if (!empty($term->slug))
     $image = hb_get_taxonomy_image('teaching_topics', $term->slug, hb_enum_taxonomy_image_type::banner_image);
-else 
+else
     $image = hb_get_taxonomy_image('teaching_topics', 'god', hb_enum_taxonomy_image_type::banner_image);
 
-if(is_page()){
+if (is_page()) {
     get_header();
     oxy_page_header();
-}else{
+} else {
     get_header();
     oxy_create_hero_section($image, $title);
 }
-
 ?>
+<section class="section section-padded">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <?php the_post(); the_content(); ?>
+            </div>        
+        </div>
+</section>
 <section class="section section-padded">
     <div class="container-fluid">
         <div class="row-fluid">
@@ -52,12 +59,13 @@ if(is_page()){
                 <?php get_template_part('partials/hb_loop_video_church'); ?>
             </div>
             <aside class="span3 sidebar">
-                <?php dynamic_sidebar('sidebar-videos'); ?>
+                <?php dynamic_sidebar('sidebar-church-videos'); ?>
             </aside>
         </div>        
     </div>
 </section>
-<?php get_footer();
+<?php
+get_footer();
 
 
-            
+

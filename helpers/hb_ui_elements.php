@@ -5,19 +5,19 @@
  * @param title $title <i>title</i>
  * @return string
  */
-function hb_ui_taxonomy_terms_cloud($post_type, $title) {
+function hb_ui_taxonomy_terms_cloud($post_type, $title, $taxonomy_name='teaching_topics') {
     if (empty($post_type))
         $post_type = array('oxy_content', 'oxy_video', 'oxy_audio');
     $args = array(
         'hide_empty' => 1,
-        'taxonomy' => 'teaching_topics',
+        'taxonomy' => $taxonomy_name,
         'pad_counts' => 1,
         'hierarchical' => 0
     );
     return oxy_shortcode_layout(NULL, hb_ui_title(array(
                 'tag' => 3,
                 'content' => $title
-            )) .  hb_ui_taxonomy_terms_as_list(get_categories($args), $post_type), 
+            )) .  hb_ui_taxonomy_terms_as_list(get_categories($args), $post_type, $taxonomy_name), 
             "sidebar-widget widget_tag_cloud");
 }
 
@@ -27,14 +27,14 @@ function hb_ui_taxonomy_terms_cloud($post_type, $title) {
  * @param string $post_type <i>type of post</i>
  * @return string
  */
-function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type) {
+function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type, $taxonomy_name='teaching_topics') {
     $add_all = TRUE;
     foreach ($taxonomy_topics as $taxonomy_topic) {
         $posts_in_category = get_posts(array(
             'showposts' => -1,
             'post_type' => $post_type,
             'tax_query' => array(array(
-                    'taxonomy' => 'teaching_topics',
+                    'taxonomy' => $taxonomy_name,
                     'field' => 'slug',
                     'terms' => $taxonomy_topic->slug)
             )
@@ -42,7 +42,7 @@ function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type) {
         $count = count($posts_in_category);
         $tax_name = " " . $taxonomy_topic->name . " (" . $count . ")";
         //dont add post type for theme, but do link for all post types
-        $link = get_term_link( $taxonomy_topic->slug, 'teaching_topics' );
+        $link = get_term_link( $taxonomy_topic->slug, $taxonomy_name );
         if (!is_array($post_type)) {
             $link = $link . "/?post_type=" . $post_type;
         }

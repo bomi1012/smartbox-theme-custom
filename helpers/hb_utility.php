@@ -222,13 +222,14 @@ function hb_get_linkformat($post_format) {
  * @param post of type oxy_video_church $post
  * @return string
  */
-function hb_get_jw_player_for_video_curch($post){
+function hb_get_jw_player_for_video_church($post){
     $rtmp_url = get_field('rtmp_url', $post->ID);
     $smil_url = get_field('smil_url', $post->ID);
     $m3u8_url = get_field('m3u8_url', $post->ID);
+    $player_id = guid();
     $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
-    $output .= "<center><div id=\"streamplay\">Loading the player...</div>&nbsp;</center>";
-    $output .= "<script type=\"text/javascript\">jwplayer(\"streamplay\").setup({\"sources\":";
+    $output .= "<center><div id=\"'.$player_id.'\">Loading the player...</div>&nbsp;</center>";
+    $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({\"sources\":";
     $add_comma = false;
     if(!empty($rtmp_url)){
         $output .= "[{ \"file\": \"".$rtmp_url."\" }],   height: 460, width: 840}";
@@ -244,5 +245,28 @@ function hb_get_jw_player_for_video_curch($post){
     }
     $output .= ");</script>";
     return $output;
+}
+
+/**
+ * @package HELPER
+ * @description generate guid
+ * @return string
+ */
+function guid(){
+    if (function_exists('com_create_guid')){
+        return com_create_guid();
+    }else{
+        mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+        $charid = strtoupper(md5(uniqid(rand(), true)));
+        $hyphen = chr(45);// "-"
+        $uuid = chr(123)// "{"
+                .substr($charid, 0, 8).$hyphen
+                .substr($charid, 8, 4).$hyphen
+                .substr($charid,12, 4).$hyphen
+                .substr($charid,16, 4).$hyphen
+                .substr($charid,20,12)
+                .chr(125);// "}"
+        return $uuid;
+    }
 }
 ?>

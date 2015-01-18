@@ -28,7 +28,10 @@ global $post;
                     $content = get_the_content();
                 endif;
                 $video_shortcode = get_field('video_shortcode', $post->ID);
-                $output = '<div>' . hb_create_videowrapper_div($video_shortcode, $span = "span12", "1250", "703") . '</div>';
+                if(empty($video_shortcode))
+                    $output = '<div>' . hb_get_jw_player_for_video_church($post) . '</div>';
+                else 
+                    $output = '<div>' . hb_create_videowrapper_div($video_shortcode, $span = "span12", "1250", "703") . '</div>';
                 $output .= '<div class="span12" style="margin-top: 25px;">' . $content . '</div>';
                 echo $output;
                 ?>

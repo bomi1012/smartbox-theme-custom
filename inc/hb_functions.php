@@ -198,19 +198,22 @@ Class Taxonomy_Topics extends WP_Widget {
 
         $title = apply_filters('widget_title', empty($instance['title']) ? __('Taxonomy Topics', THEME_FRONT_TD) : $instance['title'], $instance, $this->id_base);
         $post_type    = isset( $instance['post_type'] ) ? esc_attr( $instance['post_type'] ) : 'oxy_content';
-        echo $before_widget;
-        echo hb_ui_taxonomy_terms_cloud($post_type, $title);
-        echo $after_widget;
+        $taxonomy_name    = isset( $instance['taxonomy_name'] ) ? esc_attr( $instance['taxonomy_name'] ) : 'teaching_topics';
+        echo hb_ui_taxonomy_terms_cloud($post_type, $title, $taxonomy_name);
     }
     function form( $instance ) {
 		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$post_type    = isset( $instance['post_type'] ) ? esc_attr( $instance['post_type'] ) : 'oxy_content';
+                $taxonomy_name    = isset( $instance['taxonomy_name'] ) ? esc_attr( $instance['taxonomy_name'] ) : 'teaching_topics';
 ?>
 		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
 		<p><label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Type of posts to show:' ); ?></label>
 		<input id="<?php echo $this->get_field_id( 'post_type' ); ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>" type="text" value="<?php echo $post_type; ?>"/></p>
+
+     		<p><label for="<?php echo $this->get_field_id( 'taxonomy_name' ); ?>"><?php _e( 'Type of taxonomy to show:' ); ?></label>
+		<input id="<?php echo $this->get_field_id( 'taxonomy_name' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy_name' ); ?>" type="text" value="<?php echo $taxonomy_name; ?>"/></p>
 
 <?php
 	}
@@ -244,6 +247,8 @@ Class Custom_Search extends WP_Widget {
             include( CUSTOM_THEME_DIR . 'searchform_sidebar_videos.php');        
         elseif ($post_type === 'oxy_content') 
             include( CUSTOM_THEME_DIR . 'searchform_sidebar_texts.php');
+        elseif ($post_type === 'oxy_video_church') 
+            include( CUSTOM_THEME_DIR . 'searchform_sidebar_church_videos.php');
         echo $after_widget;
     }
     function form( $instance ) {

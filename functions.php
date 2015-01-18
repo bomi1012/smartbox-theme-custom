@@ -23,6 +23,7 @@ $theme = new OxyCustomTheme(
          'sidebars' => array(
             'sidebar'            => array( 'Main Sidebar', 'Main sidebar for blog and non full width pages' ),
             'sidebar-videos'     => array( 'Video Sidebar', 'Video sidebar for video archive' ),
+            'sidebar-church-videos'     => array( 'Church Video Sidebar', 'Sidebar for video church archive' ),
             'sidebar-texts'     => array( 'Text Sidebar', 'Text sidebar for text archive' ),
             'sidebar-audios'     => array( 'Audio Sidebar', 'Audio sidebar for audio archive' ),
             'sidebar-music'     => array( 'Music Sidebar', 'Sidebar for music side' ),

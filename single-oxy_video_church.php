@@ -13,7 +13,7 @@ $allow_comments = oxy_get_option('site_comments');
             <div class="span12">
                 <?php the_post(); ?>
                 <div class="span12">
-                    <?php echo hb_get_jw_player_for_video_curch($post); ?>
+                    <?php echo hb_get_jw_player_for_video_church($post); ?>
                 </div>
                 <div class="span12">
                     <?php if ($allow_comments == 'posts' || $allow_comments == 'all') comments_template('', true); ?>
