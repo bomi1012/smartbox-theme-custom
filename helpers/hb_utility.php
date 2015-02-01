@@ -246,6 +246,30 @@ function hb_get_jw_player_for_video_church($post){
     $output .= ");</script>";
     return $output;
 }
+/**
+ * @package HELPER
+ * @description provides categories (taxonomy topics) for slugs entered by user
+ * @param there is an attribute "topics" of the shortcode latest_taxonomy_topics. Each entered topic is a taxonomy_slug for the query.
+ *      $topics. 
+ * @return a list of taxonomy topics or nothing
+ */
+function hb_get_categorien_for_entered_topics ($topics){
+    $topicArray = split("\s?[,;]", $topics);
+    $categories = array();
+    $count = count($topicArray);
+    for ($i = 0; $i < $count; $i++) {
+        $args = array(
+        'hide_empty' => 1,
+        'taxonomy' => 'teaching_topics',
+        'pad_counts' => 1,
+        'hierarchical' => 0,
+        'slug' => $topicArray[$i],
+    );
+  //  $categories = get_categories($args);
+    $categories = array_merge($categories , get_categories($args));
+    }
+    return $categories;
+}
 
 /**
  * @package HELPER

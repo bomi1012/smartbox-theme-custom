@@ -14,14 +14,23 @@ require_once CUSTOM_HELPERS_DIR . 'hb_ui_elements.php';
  * @return string
  */
 function hb_shortcode_latest_taxonomy_topics_as_list($atts) {
-    $args = array(
-        'hide_empty' => 1,
-        'taxonomy' => 'teaching_topics',
-        'pad_counts' => 1,
-        'hierarchical' => 0,
-        'number' => '2',
-    );
-    $categories = get_categories($args);
+    extract(shortcode_atts(array(
+        'title' => '',
+        'style' => '',
+        'topics' => ''
+                    ), $atts));
+    if (empty($topics)){
+       $args = array(
+       'hide_empty' => 1,
+       'taxonomy' => 'teaching_topics',
+       'pad_counts' => 1,
+       'hierarchical' => 0,
+       'number' => '2',
+        );
+        $categories = get_categories($args);
+    } else {
+        $categories = hb_get_categorien_for_entered_topics($topics);
+    }
     //loop over all related posts
     $output_loop = '';
     foreach ($categories as $taxonomy) {
@@ -39,12 +48,9 @@ function hb_shortcode_latest_taxonomy_topics_as_list($atts) {
                             array(
                                 'link' => $link,
                                 'content' => $taxonomy->name))));
-        $blockquote = hb_get_blockquote(
-                array(
-                    'class' => 'margin_bottom_25px_mb',
-                    'content' => $summary . $more_text));
+        $content =  $summary . $more_text;
 
-        $output_loop .= oxy_shortcode_layout(NULL, $title . $blockquote, 'well blockquote-well');
+        $output_loop .= oxy_shortcode_layout(NULL, $title . $content, "unstyled row-fluid");
     }
     $output = oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid');
     return oxy_shortcode_section($atts, $output);
