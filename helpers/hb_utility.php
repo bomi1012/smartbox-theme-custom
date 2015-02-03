@@ -228,25 +228,27 @@ function hb_get_jw_player_for_video_church($post){
     $m3u8_url = get_field('m3u8_url', $post->ID);
     $player_id = guid();
     $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
-    $output .= "<center><div id=\"'.$player_id.'\">Loading the player...</div>&nbsp;</center>";
-    $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({\"sources\":";
+    $output .= "<div class='videoWrapper'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
+    $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({sources:[";
     $add_comma = false;
     if(!empty($rtmp_url)){
-        $output .= "[{ \"file\": \"".$rtmp_url."\" }],   height: 460, width: 840}";
+        $output .= "{ file: \"".$rtmp_url."\" ,   width: '100%', aspectratio:'16:9'}";
         $add_comma = true;
     }
     if(!empty($smil_url)){
         if($add_comma) $output .= ",";
-        $output .= "[{ \"file\": \"".$smil_url."\" }],   height: 460, width: 840}";
+        $output .= "{ file: \"".$smil_url."\" ,   width: '100%', aspectratio:'16:9'}";
+        $add_comma = true;
     }
     if(!empty($m3u8_url)){
         if($add_comma) $output .= ",";
-        $output .= "[{ \"file\": \"".$m3u8_url."\" }],   height: 460, width: 840}";
+        $output .= "{ file: \"".$m3u8_url."\" ,   width: '100%', aspectratio:'16:9'}";
+        $add_comma = true;
     }
-    $output .= ");</script>";
+    $output .= "]});</script>";
     return $output;
-}
-/**
+  }
+ /**
  * @package HELPER
  * @description provides categories (taxonomy topics) for slugs entered by user
  * @param there is an attribute "topics" of the shortcode latest_taxonomy_topics. Each entered topic is a taxonomy_slug for the query.
