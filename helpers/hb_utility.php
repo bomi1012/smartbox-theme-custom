@@ -232,17 +232,17 @@ function hb_get_jw_player_for_video_church($post){
     $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({sources:[";
     $add_comma = false;
     if(!empty($rtmp_url)){
-        $output .= "{ file: \"".$rtmp_url."\" ,   width: '100%', aspectratio:'16:9'}";
+        $output .= "{ file: \"".$rtmp_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
         $add_comma = true;
     }
     if(!empty($smil_url)){
         if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$smil_url."\" ,   width: '100%', aspectratio:'16:9'}";
+        $output .= "{ file: \"".$smil_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
         $add_comma = true;
     }
     if(!empty($m3u8_url)){
         if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$m3u8_url."\" ,   width: '100%', aspectratio:'16:9'}";
+        $output .= "{ file: \"".$m3u8_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
         $add_comma = true;
     }
     $output .= "]});</script>";

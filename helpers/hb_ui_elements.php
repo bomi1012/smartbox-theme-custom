@@ -14,11 +14,16 @@ function hb_ui_taxonomy_terms_cloud($post_type, $title, $taxonomy_name='teaching
         'pad_counts' => 1,
         'hierarchical' => 0
     );
+    if($post_type == "oxy_church_video")
+        $style = "sidebar-widget widget_tag_cloud";
+    else
+        $style = "sidebar-widget";
+    
     return oxy_shortcode_layout(NULL, hb_ui_title(array(
                 'tag' => 3,
                 'content' => $title
             )) .  hb_ui_taxonomy_terms_as_list(get_categories($args), $post_type, $taxonomy_name), 
-            "sidebar-widget widget_tag_cloud");
+            $style);
 }
 
 /**
@@ -52,6 +57,8 @@ function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type, $taxonomy_na
                 'showposts' => -1,
                     )
             );
+            $list_style = 'hb_cloud_style';
+            $tag ='li';
             $count_all = count($posts_all);
             if ($post_type == 'oxy_video') {
                 $link_all = home_url() . "/videoarchive";
@@ -62,12 +69,13 @@ function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type, $taxonomy_na
             } elseif ($post_type == 'oxy_video_church') {
                 $title = __('Show all videos', THEME_FRONT_TD) . " (" . $count_all . ") ";
                 $link_all = home_url() . "/videochurcharchive";
+                $tag ='h4';
             }
          
             $output = hb_ui_list_wrapper(array(
-                'tag' => 'li',
+                'tag' => $tag,
                 'content' => hb_ui_link(array(
-                        'class' => 'hb_cloud_style',
+                        'class' => $list_style,
                         'link' => $link_all,
                         'content' => $title
             ))));            
@@ -75,7 +83,7 @@ function hb_ui_taxonomy_terms_as_list($taxonomy_topics, $post_type, $taxonomy_na
         }
         if (!empty($count)) {
             $output .= hb_ui_list_wrapper(array(
-                'tag' => 'li',
+                'tag' => $tag,
                 'content' => hb_ui_link(array(
                         'class' => 'hb_cloud_style',
                         'link' => $link,
