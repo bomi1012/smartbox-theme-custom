@@ -14,10 +14,10 @@ function hb_ui_taxonomy_terms_cloud($post_type, $title, $taxonomy_name='teaching
         'pad_counts' => 1,
         'hierarchical' => 0
     );
-    if($post_type == "oxy_church_video")
-        $style = "sidebar-widget widget_tag_cloud";
-    else
+    if($post_type == "oxy_video_church")
         $style = "sidebar-widget";
+    else
+        $style = "sidebar-widget widget_tag_cloud";
     
     return oxy_shortcode_layout(NULL, hb_ui_title(array(
                 'tag' => 3,
