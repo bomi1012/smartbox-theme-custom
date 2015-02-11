@@ -231,7 +231,7 @@ function hb_get_jw_player_for_video_church($post){
     $player_id = guid();
     $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
     if(!empty($android_url)){
-        $content = do_shortcode("[button icon=\"icon-film\" type=\"info\" size=\"btn-medium\" label=\"Play on android\" link=\"$android_url\"]");
+        $content = do_shortcode("[button icon=\"icon-film\" type=\"primary\" size=\"btn-medium\" label=\"Play on android\" link=\"$android_url\"]");
         $output .= $content;   
     }
     $output .= "<div class='videoWrapper'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
