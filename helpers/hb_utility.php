@@ -226,8 +226,14 @@ function hb_get_jw_player_for_video_church($post){
     $rtmp_url = get_field('rtmp_url', $post->ID);
     $smil_url = get_field('smil_url', $post->ID);
     $m3u8_url = get_field('m3u8_url', $post->ID);
+    $android_url = get_field('android_url', $post->ID);
+    
     $player_id = guid();
     $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
+    if(!empty($android_url)){
+        $content = do_shortcode("[button icon=\"icon-film\" type=\"info\" size=\"btn-medium\" label=\"Play on android\" link=\"$android_url\"]");
+        $output .= $content;   
+    }
     $output .= "<div class='videoWrapper'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
     $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({sources:[";
     $add_comma = false;
@@ -245,7 +251,7 @@ function hb_get_jw_player_for_video_church($post){
         $output .= "{ file: \"".$m3u8_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
         $add_comma = true;
     }
-    $output .= "]});</script>";
+    $output .= "], width: '100%', aspectratio:'16:9'} );</script>";
     return $output;
   }
  /**
