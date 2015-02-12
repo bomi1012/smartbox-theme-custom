@@ -1,10 +1,10 @@
 <?php
 /**
  * Displays archive for videos. This page is used for requests:
- * 1 Search reguest of videos(e.g. url =".../?s=searched_keaword&post_type=oxy_video"
- * 2 Taxonomy request of videos (e.g. url = ".../blog/teaching_topics/golgota/?post_type=oxy_video")
- * 3 Archive request of videos (e.g. url = ".../blog/2014/10/?post_type=oxy_video")
- * 4 Display all videos (e.g url = "...?post_type=oxy_video")
+ * 1 Search reguest of videos(e.g. url =".../?s=searched_keaword&post_type=oxy_video_church"
+ * 2 Category request of videos (e.g. url = ".../blog/oxy_video_church_category/landau/?post_type=oxy_video_church")
+ * 3 Archive request of videos (e.g. url = ".../blog/2014/10/?post_type=oxy_church_video")
+ * 4 Display all videos (e.g url = "...?post_type=oxy_video_church")
  * @package Smartbox
  * @subpackage Frontend
  * @since 0.1
@@ -50,10 +50,11 @@ if (is_page()) {
             <div class="span12">
                 <?php
                     //show content of page which could be maintained in admin panel but not if it is archive query
-                    if(!is_archive()){the_post(); the_content();} 
+                    if(!is_archive()){ the_post(); the_content();} 
                 ?>
             </div>        
         </div>
+    </div>
 </section>
 <section class="section section-padded">
     <div class="container-fluid">
