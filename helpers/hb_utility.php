@@ -234,26 +234,49 @@ function hb_get_jw_player_for_video_church($post){
         $content = do_shortcode("[button icon=\"icon-film\" type=\"primary\" size=\"btn-medium\" label=\"Play on android\" link=\"$android_url\"]");
         $output .= $content;   
     }
+    
+    //Detect special conditions devices
+    $iPod = stripos($_SERVER['HTTP_USER_AGENT'], "iPod");
+    $iPhone = stripos($_SERVER['HTTP_USER_AGENT'], "iPhone");
+    $iPad = stripos($_SERVER['HTTP_USER_AGENT'], "iPad");
+    $Android = stripos($_SERVER['HTTP_USER_AGENT'], "Android");
+    $webOS = stripos($_SERVER['HTTP_USER_AGENT'], "webOS");
+
     $output .= "<div class='videoWrapper'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
-    $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({sources:[";
-    $add_comma = false;
-    if(!empty($rtmp_url)){
-        $output .= "{ file: \"".$rtmp_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
-        $add_comma = true;
-    }
+    $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({";
+    //$output .= "],";
+    $add_comma = false;    
+    $output .= "playlist: [{ title: \"Play Video\", sources: [ ";
     if(!empty($smil_url)){
-        if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$smil_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
+        //if($add_comma) $output .= ",";
+        $output .= "{ file: \"".$smil_url."\" }";
         $add_comma = true;
     }
+    
     if(!empty($m3u8_url)){
         if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$m3u8_url."\" ,   width: '100%', height: '100%', aspectratio:'16:9'}";
+        $output .= "{ file: \"".$m3u8_url."\"}";
         $add_comma = true;
     }
-    $output .= "], width: '100%', aspectratio:'16:9'} );</script>";
-    return $output;
-  }
+
+    if(!empty($rtmp_url)){
+        if($add_comma) $output .= ",";
+        $output .= "{ file: \"".$rtmp_url."\"}";
+        $add_comma = true;
+    }   
+
+    $output .= " ]}],";
+    
+    if ($iPad) 
+        $output .= "height: 360, width: 600} );</script>";
+    else if ($iPod || $iPhone)
+        $output .= "height: 120, width: 200} );</script>";
+    else
+        $output .= "width: '100%', aspectratio:'16:9', primary: \"html5\"} );</script>";
+
+    
+    return $output;  
+}
  /**
  * @package HELPER
  * @description provides categories (taxonomy topics) for slugs entered by user
