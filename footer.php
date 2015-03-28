@@ -5,7 +5,8 @@
     <div class="wrapper wrapper-transparent">
         <div class="container-fluid">
             <div class="row-fluid">
-                <?php $columns = oxy_get_option('footer_columns');
+                <?php
+                $columns = oxy_get_option('footer_columns');
                 $span = 'span' . (12 / $columns);
                 ?>
                 <div class="<?php echo $span; ?> text-left"><?php dynamic_sidebar("footer-left"); ?></div>
@@ -73,5 +74,8 @@
 <noscript><div><img src="//mc.yandex.ru/watch/27123095" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <?php wp_footer(); ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src= "<?php echo home_url() ?>/wp-content/themes/smartbox-theme-custom/inc/js/custom_main.js" type="text/javascript"></script>
 </body>
 </html>
