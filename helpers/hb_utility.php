@@ -223,6 +223,7 @@ function hb_get_linkformat($post_format) {
  * @return string
  */
 function hb_get_jw_player_for_video_church($post){
+    $mp3_url = get_field('content_audio_shortcode', $post->ID);
     $rtmp_url = get_field('rtmp_url', $post->ID);
     $smil_url = get_field('smil_url', $post->ID);
     $m3u8_url = get_field('m3u8_url', $post->ID);
@@ -241,8 +242,10 @@ function hb_get_jw_player_for_video_church($post){
     $iPad = stripos($_SERVER['HTTP_USER_AGENT'], "iPad");
     $Android = stripos($_SERVER['HTTP_USER_AGENT'], "Android");
     $webOS = stripos($_SERVER['HTTP_USER_AGENT'], "webOS");
-
-    $output .= "<div class='videoWrapper'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
+    
+    if(empty($mp3_url))$div_class = "videoWrapper";
+    
+    $output .= "<div class='".$div_class."'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
     $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({";
     //$output .= "],";
     $add_comma = false;    
@@ -265,9 +268,17 @@ function hb_get_jw_player_for_video_church($post){
         $add_comma = true;
     }   
 
+    if(!empty($mp3_url)){
+        if($add_comma) $output .= ",";
+        $output .= "{ file: \"".$mp3_url."\"}";
+        $add_comma = true;
+    }   
+    
     $output .= " ]}],";
     
-    if ($iPad) 
+    if (!empty($mp3_url))
+        $output .= "height: 30, width: 600} );</script>";
+    else if ($iPad) 
         $output .= "height: 360, width: 600} );</script>";
     else if ($iPod || $iPhone)
         $output .= "height: 120, width: 200} );</script>";
