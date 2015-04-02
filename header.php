@@ -33,7 +33,7 @@
 <script src="wp-content/themes/smartbox-theme-custom/inc/js/jquery.ui.totop.js" type="text/javascript"></script>
 <!-- Starting the plugin -->
 <script type="text/javascript">
-$(document).ready(function() {
+$(document).ready(function() {   
 /*
 var defaults = {
 containerID: 'toTop', // fading element id
@@ -42,7 +42,7 @@ scrollSpeed: 1200,
 easingType: 'linear'
 };
 */
- 
+
 $().UItoTop({ easingType: 'easeOutQuart' });
  
 });

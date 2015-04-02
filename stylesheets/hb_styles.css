@@ -283,3 +283,12 @@ margin: 0;
 .hb_taxonomy_desc {
     margin-bottom: 45px;
 }
+
+.hb_margin-left_10 {
+   margin-left: 10px; 
+}
+
+span.cursor {
+    color: #42576a;
+    cursor: pointer;
+}
