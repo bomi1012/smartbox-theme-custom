@@ -364,3 +364,121 @@ function hb_shortcode_add_element_into_wrapper($atts) {
     return oxy_shortcode_section($atts, hb_create_videowrapper_div($src_url, "span12"));
 }
 add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
+/**
+ * @description a helper method in order to get the recent content
+ * @global type $post
+ * @param array $atts
+     * title - title for the span e.g. sermons/blog
+     * icon - the label of the icon e.g. icon-music
+ * @return String
+ *          as span12 (no section)
+ */   
+ function hb_get_recent_content($title, $content_type, $count, $icon){
+        $args = array(
+        'title' => '',
+        'post_type' => array($content_type),
+        'showposts' => $count, // Number of related posts that will be shown.  
+        'orderby' => 'date',
+    );
+    $my_query = new wp_query($args);
+    if ($my_query->have_posts()) {
+        while ($my_query->have_posts()) {
+            global $post;
+            $my_query->the_post();
+            setup_postdata($post);
+            
+            $date = get_the_time(get_option("date_format"));
+            $post_link = hb_get_linkformat(get_post_format());
+             $image = hb_shortcode_image(array(
+                'size' => 'round-box round-small',
+                'source' => CUSTOM_IMAGES_DIR . 'bg-icon3001.jpg',
+                'icon' => $icon,
+                'link' => $post_link
+            ));
+            $content = $image;
+            $title_link = hb_ui_link(array(
+                'link' => hb_get_linkformat(get_post_format()),
+                'content' => hb_ui_title(array(
+                    'content' => get_the_title()
+                ))
+            ));
+            $content .='<h3 class="text-center">'.$title.'</h3>';
+            $content .= '<p><b>'. $title_link .' </b>';
+            if($content_type == "oxy_content"){
+                $content .= strip_tags(get_field('summary', $post->ID));
+            }else {
+                 $content .=oxy_limit_excerpt(strip_tags(get_the_content()), 40).'</p>';
+            }
+            
+            $content.='<a class="btn btn-inverse btn-mini" href="'
+                    . get_permalink().'">More </a></li>';
+
+            $text = apply_filters('the_content', $content);
+
+            $output_loop .= oxy_shortcode_layout(NULL, do_shortcode( $text), 'span12');
+        }
+    }
+    return $output_loop;
+    }
+/**
+ * @description used on main pages in dutch and german in order to show latest video
+ * @global type $post
+ * @param array $atts
+     * title - title for the span e.g. sermons/blog
+     * icon - the label of the icon e.g. icon-music
+ * @return String
+ */      
+    function hb_shortcode_newest_video($atts){
+        extract(shortcode_atts(array(
+        'title' => '',
+         'icon' => 'icon-pencil'), $atts));
+        return hb_get_recent_content($title, 'oxy_video', 1, $icon);
+    }
+    add_shortcode('hb_newest_video', 'hb_shortcode_newest_video');
+ /**
+ * @description used on main pages in dutch and german in order to show latest sermon
+ * @global type $post
+ * @param array $atts
+     * title - title for the span e.g. sermons/blog
+     * icon - the label of the icon e.g. icon-music
+ * @return String
+ */     
+    function hb_shortcode_newest_sermon($atts){
+         extract(shortcode_atts(array(
+        'title' => '',
+        'icon' => 'icon-pencil'), $atts));
+        return hb_get_recent_content($title, 'oxy_content', 1, $icon);
+    }
+    add_shortcode('hb_newest_sermon', 'hb_shortcode_newest_sermon');
+ /**
+ * @description used on main pages in dutch and german in order to show latest blog posts
+ * @global type $post
+ * @param array $atts
+     * title - title for the span e.g. sermons/blog
+     * icon - the label of the icon e.g. icon-music
+ * @return String
+ */   
+     function hb_shortcode_newest_blog_post($atts){
+          extract(shortcode_atts(array(
+        'title' => '',
+         'icon' => 'icon-pencil'), $atts));
+        return hb_get_recent_content($title, 'post', 1, $icon);
+    }
+    add_shortcode('hb_newest_blog', 'hb_shortcode_newest_blog_post');
+    /**
+ * @description used on main pages in dutch and german in order to show latest portfolio item
+     * e.g. music videoclip or for children corner
+ * @global type $post
+ * @param array $atts
+     * title - title for the span e.g. sermons/blog
+     * icon - the label of the icon e.g. icon-music
+ * @return String
+ */
+     function hb_shortcode_newest_portfolio($atts){
+          extract(shortcode_atts(array(
+        'title' => '',
+         'icon' => 'icon-pencil'), $atts));
+        return hb_get_recent_content($title, 'oxy_portfolio_image' , 1, $icon);
+    }
+    add_shortcode('hb_newest_portfolio', 'hb_shortcode_newest_portfolio');
+    
