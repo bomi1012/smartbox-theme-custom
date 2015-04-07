@@ -411,7 +411,7 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
             }
             
             $content.='<a class="btn btn-inverse btn-mini" href="'
-                    . get_permalink().'">More </a></li>';
+                    . get_permalink().'">'.__('More', THEME_FRONT_TD).' </a></li>';
 
             $text = apply_filters('the_content', $content);
 
@@ -482,3 +482,48 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
     }
     add_shortcode('hb_newest_portfolio', 'hb_shortcode_newest_portfolio');
     
+ /**
+ * @description used for example on main page for section with random video
+ * @param array $atts
+ * @return string
+ */
+function hb_shortcode_section_with_video($atts) {
+    extract(shortcode_atts(array(
+        'title' => '',
+        'summary' => '',
+        'random_posts' => 'true',
+        'post_video' => '',
+        'taxonomy_slug' => '',
+        'style'=>''
+                    ), $atts));
+
+    $title = $title === null ? oxy_get_option('blog_title') : $title;
+
+    //take random video post and show it
+    if ($random_posts) {
+        $args = array(
+            'post_type' => 'oxy_video',
+            'showposts' => 1,
+            'orderby' => 'rand'
+        );
+        $my_query = new wp_query($args);
+        $post_video = $my_query->post;
+    }
+
+    if (!empty($post_video)) {
+        $title = $post_video->post_title;
+        $summary = hb_limit_string($post_video->post_content, 50);
+        $shortcode = get_field('video_shortcode', $post_video->ID);
+    }
+
+    $title_ui = hb_ui_title(array(
+        'tag' => 1,
+        'class' => 'text-center',
+        'content' => $title
+    ));
+    $text_left = oxy_shortcode_layout(NULL, do_shortcode('<p>' . $summary . '</p>'), 'span4  margin-top margin-bottom');
+    $row = oxy_shortcode_row(NULL, $text_left . hb_create_videowrapper_div($shortcode), NULL);
+    return  oxy_shortcode_section($atts, do_shortcode($title_ui . $row));
+   
+}
+add_shortcode('section_with_video', 'hb_shortcode_section_with_video');
