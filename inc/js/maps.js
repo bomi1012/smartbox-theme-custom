@@ -38,7 +38,11 @@ var markers = [
     ['Landau in der Pfalz', 49.19889, 8.11856, ICON_PATH + images.RED],
     ['Siegburg', 50.79985, 7.20745, ICON_PATH + images.RED],
     //Netherlands
-    ['Nieuwegein', 52.02482, 5.09182, ICON_PATH + images.YELLOW]
+    ['Nieuwegein', 52.02482, 5.09182, ICON_PATH + images.YELLOW],
+    //USA
+    ['Seattle, WA', 47.60621, -122.33207, ICON_PATH + images.BLUE],
+    ['Charlotte, NC', 35.22709, -80.84313, ICON_PATH + images.BLUE],
+    ['Jacksonville, FL ', 30.33218, -81.65565, ICON_PATH + images.BLUE]
 ];
 var styles = [
     {
@@ -65,7 +69,7 @@ var map;
 var bounds = new google.maps.LatLngBounds();
 
 (function($) {
-    $(document).ready(function($) {
+    $(document).ready(function() {
         styledMap = new google.maps.StyledMapType(styles, {name: 'roadmap'}),
         map = new google.maps.Map(document.getElementById('map'), {
             scrollwheel: false,
