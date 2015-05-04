@@ -4,15 +4,15 @@
 @import url("http://fonts.googleapis.com/css?family=Pacifico");
 
 .super {
-display:none;
+    display:none;
 }
 
 body {
-  font-family: "Merriweather", Georgia, serif;
-  font-size: 1em;
-  font-weight: 300;
-  line-height: 1.9em;
-  color: #1E1E1E;
+    font-family: "Merriweather", Georgia, serif;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.9em;
+    color: #1E1E1E;
 }
 
 body.custom-background {
@@ -21,7 +21,7 @@ body.custom-background {
 }
 nav a{
     font-family: "Roboto Slab", sans-serif;
-   font-weight:300;
+    font-weight:300;
 }
 
 .wrapper {
@@ -35,10 +35,10 @@ Typography
 *************************************/
 
 h1 {
-  font-family: "Merriweather", Georgia, serif;
-  font-weight: 300;
-  text-transform: capitalize;
-  padding-top: 1em;
+    font-family: "Merriweather", Georgia, serif;
+    font-weight: 300;
+    text-transform: capitalize;
+    padding-top: 1em;
 }
 
 h2 {
@@ -46,110 +46,110 @@ h2 {
     font-size: 1.3em;
     color: #484848;
     font-weight: 300;
-   clear: both;
+    clear: both;
 }
 h3{
-  line-height: 24px;
-  margin: 2em 0 1em 0;
-  font-size: 1.5em;
-  font-family: "Roboto Slab", Georgia, serif;
-  font-weight: 400;
-  text-transform: capitalize;
+    line-height: 24px;
+    margin: 2em 0 1em 0;
+    font-size: 1.5em;
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 400;
+    text-transform: capitalize;
 }
 .double-line{
-  font-size: 1.6em;
-  text-align: center;
-  border-bottom: 4px double #808080;
-  width: 50%;
-  margin: 0px auto 1.5em;
-  padding-bottom: 1em;
+    font-size: 1.6em;
+    text-align: center;
+    border-bottom: 4px double #808080;
+    width: 50%;
+    margin: 0px auto 1.5em;
+    padding-bottom: 1em;
 }
 #welcome h1{
-  font-family: "Merriweather",sans-serif;
-  font-size: 3.5em;
-  color: #FEBE32;
-  font-weight: 300;
-  text-transform: capitalize;
-  font-style: italic;
-  padding-top:0.5em;
+    font-family: "Merriweather",sans-serif;
+    font-size: 3.5em;
+    color: #FEBE32;
+    font-weight: 300;
+    text-transform: capitalize;
+    font-style: italic;
+    padding-top:0.5em;
 }
 
 #welcome h3{
-  line-height: 24px;
-  margin-bottom: 12px;
-  font-size: 24px;
-  color: #5A5A5A;
-  font-family: "Roboto Slab";
-  font-weight: 300;
-  margin-bottom: 30px;
-  margin-top: 0;
+    line-height: 24px;
+    margin-bottom: 12px;
+    font-size: 24px;
+    color: #5A5A5A;
+    font-family: "Roboto Slab";
+    font-weight: 300;
+    margin-bottom: 30px;
+    margin-top: 0;
 }
 .intro h1{
-  font-family: "Merriweather", serif;
-  font-size: 3em;
-  color: white;
-  font-weight: 400;
-  margin: 0.4em 0px;
-  text-transform: capitalize;
+    font-family: "Merriweather", serif;
+    font-size: 3em;
+    color: white;
+    font-weight: 400;
+    margin: 0.4em 0px;
+    text-transform: capitalize;
 }
 .intro p{
-font-family: "Merriweather",serif;
-line-height: 1.6em;
-font-weight: 300;
-font-size: 1em;
- padding:1.2em;
+    font-family: "Merriweather",serif;
+    line-height: 1.6em;
+    font-weight: 300;
+    font-size: 1em;
+    padding:1.2em;
 }
 
 p {
-  margin-top: 0em;
-  margin-bottom: 1em;
+    margin-top: 0em;
+    margin-bottom: 1em;
 }
 .summary{
-  font-size: 1.2em;
-  line-height: 1.8em;
-  text-align: center;
-  border-bottom: 4px double gray;
-  width: 80%;
-  margin: 0 auto  4em;
-  border-top: 4px double grey;
-  padding: 2em 0;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    text-align: center;
+    border-bottom: 4px double gray;
+    width: 80%;
+    margin: 0 auto  4em;
+    border-top: 4px double grey;
+    padding: 2em 0;
 } 
 
 #kids h1{
-  padding-top:1.5em;
+    padding-top:1.5em;
 }
 #kids .summary{
-  width: 30% !important;
-  padding: 0em 0px 1em 0;
-  border-top: none;
-  margin: 0px auto;
+    width: 30% !important;
+    padding: 0em 0px 1em 0;
+    border-top: none;
+    margin: 0px auto;
 }
-}
+
 #kids h2{
-  font-family: "merriweather",serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 0.9em;
-  margin-top: -1.7em;
-  text-transform: none;
-  margin-bottom: 0;
+    font-family: "merriweather",serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.9em;
+    margin-top: -1.7em;
+    text-transform: none;
+    margin-bottom: 0;
 }
 
 section-padded {
-padding: 20px 0;
+    padding: 20px 0;
 }
 
 .sidebar-header{
-  font-family: "Roboto Slab";
-  font-weight: 300;
-  color:#1E1E1E;
+    font-family: "Roboto Slab";
+    font-weight: 300;
+    color:#1E1E1E;
 }
 .sidebar a{
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
 }
 .introduction{
-  padding:4em 0;
+    padding:4em 0;
 }
 
 blockquote p {
@@ -157,17 +157,17 @@ blockquote p {
 }
 
 .bible-quote p{
-   float:left;
-   font-family: "Merriweather",serif;
-   font-weight: 300;
-   font-style: italic;
-   font-size: 0.9em;
-   line-height: 1.8em;
-   padding: 2em;
-   background-color: #efefef;
-   width: 40%;
-   margin: 1em;
-   border: 1px solid #d1d3d3;
+    float:left;
+    font-family: "Merriweather",serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.8em;
+    padding: 2em;
+    background-color: #efefef;
+    width: 40%;
+    margin: 1em;
+    border: 1px solid #d1d3d3;
 }
 
 .bible-quote{
@@ -179,13 +179,13 @@ blockquote p {
     clear:both;	
 }
 .btn{
-  font-family: "Roboto Slab", serif;
-  font-size:1.1em;
-  font-weight:300;
+    font-family: "Roboto Slab", serif;
+    font-size:1.1em;
+    font-weight:300;
 }
 .btn-inverse{
-  background-color:#51575a;
-  background-image: none;
+    background-color:#51575a;
+    background-image: none;
 }
 /********************************************
 Top and Navigation
@@ -213,10 +213,10 @@ Top and Navigation
 }
 
 .navportfolio li img{
-  display:none;
+    display:none;
 }
 .navportfolio li{
-display:block;
+    display:block;
 }
 /***************************
 Sections styles
@@ -232,37 +232,37 @@ Sections styles
     background-color: #F6F6F6;
 }
 .section-header h1 {
-  font-family: "Roboto Slab", Georgia, sans-serif;
-  font-weight: 300;
-  margin-top: -1em;
+    font-family: "Roboto Slab", Georgia, sans-serif;
+    font-weight: 300;
+    margin-top: -1em;
 }
 li{
- padding-top:1em;
+    padding-top:1em;
 }
 .lesson-description{
-  background-color:#D9EFF4;
+    background-color:#D9EFF4;
 }
 .intro{
-  background-color:rgb(240, 240, 240);
+    background-color:rgb(240, 240, 240);
 }
 .side{
-  float:right;
+    float:right;
 }
 .frame{
-  padding:0.2em;
-  border:1px solid #E6E7E8;
+    padding:0.2em;
+    border:1px solid #E6E7E8;
 }
 .turquoise{
-  background-color:#dfeceb;
+    background-color:#dfeceb;
 }
 .one-edge-shadow {
-	-webkit-box-shadow: 0 8px 6px -6px #575757;
-	   -moz-box-shadow: 0 8px 6px -6px #575757;
-	        box-shadow: 0 8px 6px -6px #575757;
+    -webkit-box-shadow: 0 8px 6px -6px #575757;
+    -moz-box-shadow: 0 8px 6px -6px #575757;
+    box-shadow: 0 8px 6px -6px #575757;
 }
 .video-bg{
-  background-color:#413b3c;
-  color:white;
+    background-color:#413b3c;
+    color:white;
 }
 /**************************
 Portfolio
@@ -272,7 +272,7 @@ Portfolio
     font-weight:400;
     text-transform: capitalize;
     font-family: "Roboto", sans-serif;
-   color:#1E1E1E;
+    color:#1E1E1E;
 }
 .portfolio figure  p{
     display: none;
@@ -286,54 +286,74 @@ Portfolio
 Media Queries
 ***********************/
 @media (max-width: 320px) { 
-#masthead .brand, #masthead .navbar-inner {
-    padding-top: 0;
-}
-h2{
-  line-height: 1.3em;
-}
-.super-hero-unit{
-   display:none;
-}
-.summary{
-  width:100%;
-}
-#kids .summary{
-  width:100% !important;
-}
-.section-alt {
-  padding-top: 0.5em;
-}
-.intro h1{
-     font-size:2.5em;
+    #masthead .brand, #masthead .navbar-inner {
+        padding-top: 0;
     }
-.bible-quote p{
-   width: 11em;
-   clear:both;
-}
-.bible-quote{
-    margin: 0;
-}
+    h2{
+        line-height: 1.3em;
+    }
+    .super-hero-unit{
+        display:none;
+    }
+    .summary{
+        width:100%;
+    }
+    #kids .summary{
+        width:100% !important;
+    }
+    .section-alt {
+        padding-top: 0.5em;
+    }
+    .intro h1{
+        font-size:2.5em;
+    }
+    .bible-quote p{
+        width: 11em;
+        clear:both;
+    }
+    .bible-quote{
+        margin: 0;
+    }
 }
 @media only screen and (min-width: 40.063em) {
-.fullwidth .container-fluid {
-  max-width: 50em;
+    .fullwidth .container-fluid {
+        max-width: 50em;
+    }
+    h2{
+        font-size: 1.2em;
+        margin: 0;
+    }
+    #kids .summary{
+        width:80% !important;
+    }
 }
-h2{
-  font-size: 1.2em;
-  margin: 0;
-}
-#kids .summary{
-  width:80% !important;
-}
-	}
 @media only screen and (min-width: 64.063em) {
-.fullwidth .container-fluid {
-  max-width: 60em;
+    .fullwidth .container-fluid {
+        max-width: 60em;
+    }
+    #kids .summary{
+        width:80% !important;
+    }
 }
-#kids .summary{
-  width:80% !important;
+
+
+
+
+
+.padding_a_language {
+    padding: 0px 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -344,8 +364,8 @@ h2{
     Created on : Jun 21, 2013, 6:03:22 PM
     Author     : Mihon
     Description: Our custom styles
-*/
-/*@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
+
+@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
 
 div#blockRigthOben{
     font-size: 14px;
@@ -482,7 +502,7 @@ font-size:9px;
 }
 
  
- * https://trello.com/c/zdR1moHs/78-bug-title
+
  
 @media (max-width: 320px){
     .super {
@@ -510,8 +530,6 @@ font-size:9px;
     }
 }
 
-*
- * https://trello.com/c/CdTn2B6Y/108-homepage-link-unterstreichen-beim-mousehover
  
 a:hover {
     text-decoration: underline;
@@ -520,8 +538,6 @@ a:hover i {
     text-decoration: none;
 }
 
-*
- * https://trello.com/c/wZcXbqun/159-text
  
 div.post-body .content-text p, 
 div.post-body .content-text h2,
@@ -584,33 +600,33 @@ margin: 0;
 }
 
 #toTop {
-	display:none;
-	text-decoration:none;
-	position:fixed;
-	bottom:10px;
-	right:10px;
-	overflow:hidden;
-	width:51px;
-	height:51px;
-	border:none;
-	text-indent:100%;
-	background:url("../images/totop.png") no-repeat left top;
+        display:none;
+        text-decoration:none;
+        position:fixed;
+        bottom:10px;
+        right:10px;
+        overflow:hidden;
+        width:51px;
+        height:51px;
+        border:none;
+        text-indent:100%;
+        background:url("../images/totop.png") no-repeat left top;
 }
 
 #toTopHover {
-	background:url("../images/totop.png") no-repeat left -51px;
-	width:51px;
-	height:51px;
-	display:block;
-	overflow:hidden;
-	float:left;
-	opacity: 0;
-	-moz-opacity: 0;
-	filter:alpha(opacity=0);
+        background:url("../images/totop.png") no-repeat left -51px;
+        width:51px;
+        height:51px;
+        display:block;
+        overflow:hidden;
+        float:left;
+        opacity: 0;
+        -moz-opacity: 0;
+        filter:alpha(opacity=0);
 }
 
 #toTop:active, #toTop:focus {
-	outline:none;
+        outline:none;
 }
 
 .padding_a_language {
@@ -632,7 +648,6 @@ margin: 0;
 span.cursor {
     color: #42576a;
     cursor: pointer;
-}*/
+}
 
-
-
+*/

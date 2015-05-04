@@ -187,7 +187,7 @@ function hb_create_section_with_text_items($my_query, $atts = null) {
             $output .= oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid');
         }
         wp_reset_postdata();
-        return oxy_shortcode_section($atts, $output);
+        return hb_get_custom_shortcode_section($atts, $output);
     }
 }
 
