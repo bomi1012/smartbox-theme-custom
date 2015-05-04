@@ -53,7 +53,7 @@ function hb_shortcode_latest_taxonomy_topics_as_list($atts) {
         $output_loop .= oxy_shortcode_layout(NULL, $title . $content, "unstyled row-fluid");
     }
     $output = oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid');
-    return oxy_shortcode_section($atts, $output);
+    return hb_get_custom_shortcode_section($atts, $output);
 }
 add_shortcode('latest_taxonomy_topics', 'hb_shortcode_latest_taxonomy_topics_as_list');
 
