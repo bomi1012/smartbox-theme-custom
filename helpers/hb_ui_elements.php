@@ -248,8 +248,6 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
     $atts[title] = __('In this topic ...', THEME_FRONT_TD); //'В этой теме ...';        
     $output = oxy_shortcode_section($atts, $output);
     $output .= hb_get_flexi_slider_for_taxonomy_topic_page($taxonomy_term->slug);
-    
-    $output .= "new TEST";
     return $output;
 }
 
