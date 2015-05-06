@@ -53,7 +53,7 @@ function hb_shortcode_latest_taxonomy_topics_as_list($atts) {
         $output_loop .= oxy_shortcode_layout(NULL, $title . $content, "unstyled row-fluid");
     }
     $output = oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid');
-    return oxy_shortcode_section($atts, $output);
+    return hb_get_custom_shortcode_section($atts, $output);
 }
 add_shortcode('latest_taxonomy_topics', 'hb_shortcode_latest_taxonomy_topics_as_list');
 
@@ -115,7 +115,7 @@ function hb_shortcode_recent_video($atts) {
     endif;
     // reset post data
     wp_reset_postdata();
-    return oxy_shortcode_section($atts, $result);
+    return hb_get_custom_shortcode_section($atts, $result);
 }
 add_shortcode('hb_recent_videos', 'hb_shortcode_recent_video');
 
@@ -222,7 +222,7 @@ function hb_shortcode_recent_blog_posts($atts) {
             $output_loop .= oxy_shortcode_layout(NULL, oxy_shortcode_row(NULL, $merge_spans, NULL), 'span6');
         }
     }
-    return oxy_shortcode_section($atts, oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid'));
+    return hb_get_custom_shortcode_section($atts, oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid'));
 }
 add_shortcode('hb_blog_posts', 'hb_shortcode_recent_blog_posts');
 
@@ -240,7 +240,7 @@ function hb_shortcode_contact_form($atts, $content = null) {
     $div_content = oxy_shortcode_layout(NULL, do_shortcode($content), 'contact-details');
     $div_left = oxy_shortcode_layout(NULL, do_shortcode($div_content), 'span5');
     $div_right = oxy_shortcode_layout(NULL, do_shortcode('[contact-form-7 id="' . $id . '" title="ContactForm"]'), 'span7');
-    return oxy_shortcode_section($atts, $div_left . $div_right);
+    return hb_get_custom_shortcode_section($atts, $div_left . $div_right);
 }
 add_shortcode('hb_contact_form', 'hb_shortcode_contact_form');
 
@@ -286,7 +286,7 @@ function hb_shortcode_recent_content($atts) {
     }
     $output = oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid');
     wp_reset_postdata();
-    return oxy_shortcode_section($atts, $output);
+    return hb_get_custom_shortcode_section($atts, $output);
 }
 add_shortcode('hb_recent_content', 'hb_shortcode_recent_content');
 
@@ -361,7 +361,7 @@ function hb_shortcode_add_element_into_wrapper($atts) {
         'style' => '',
         'src_url' => ''
                     ), $atts));
-    return oxy_shortcode_section($atts, hb_create_videowrapper_div($src_url, "span12"));
+    return hb_get_custom_shortcode_section($atts, hb_create_videowrapper_div($src_url, "span12"));
 }
 add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
 /**
@@ -521,7 +521,7 @@ function hb_shortcode_section_with_video($atts) {
     ));
     $text_left = oxy_shortcode_layout(NULL, do_shortcode('<p>' . $summary . '</p>'), 'span4  margin-top margin-bottom');
     $row = oxy_shortcode_row(NULL, $text_left . hb_create_videowrapper_div($shortcode), NULL);
-    return  oxy_shortcode_section($atts, do_shortcode($title_ui . $row));
+    return  hb_get_custom_shortcode_section($atts, do_shortcode($title_ui . $row));
    
 }
 add_shortcode('section_with_video', 'hb_shortcode_section_with_video');

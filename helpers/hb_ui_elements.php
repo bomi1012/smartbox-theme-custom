@@ -187,7 +187,7 @@ function hb_create_section_with_text_items($my_query, $atts = null) {
             $output .= oxy_shortcode_layout(NULL, $output_loop, 'unstyled row-fluid');
         }
         wp_reset_postdata();
-        return oxy_shortcode_section($atts, $output);
+        return hb_get_custom_shortcode_section($atts, $output);
     }
 }
 
@@ -246,7 +246,7 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
     }
 
     $atts[title] = __('In this topic ...', THEME_FRONT_TD); //'В этой теме ...';        
-    $output = oxy_shortcode_section($atts, $output);
+    $output = hb_get_custom_shortcode_section($atts, $output);
     $output .= hb_get_flexi_slider_for_taxonomy_topic_page($taxonomy_term->slug);
     return $output;
 }
@@ -561,5 +561,27 @@ function hb_get_section_background_image_simple($atts) {
         'content' => ''), $atts));
     return '<section class="' . $class . '"data-background="' . $data_background . '" style="' . $image_link . '">'
             . $content . '</section>';
+}
+
+
+function hb_get_custom_shortcode_section($atts , $content = '') {
+       extract( shortcode_atts( array(
+        'style'      => '',
+        'title'      => '',
+        'class'      => '',
+        'header_size'=> 'h2',
+    ), $atts ) );
+
+    switch( $style ) {
+        case 'gray':
+            $style = ' section-alt';
+        break;
+        case 'dark':
+            $style = ' section-alt section-dark';
+        break;
+    }
+
+    $section_title = ( $title != '' ) ? '<'.$header_size.' class="double-line">' . oxy_filter_title( $title ) . '</'.$header_size.'>' : '';
+    return '<section class="section section-padded' . $style . ' ' . $class . '"><div class="container-fluid">' . $section_title . '<div class="row-fluid">'.do_shortcode( $content ) .'</div></div></section>';
 }
 ?>
