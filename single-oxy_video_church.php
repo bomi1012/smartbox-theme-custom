@@ -11,6 +11,12 @@ $allow_comments = oxy_get_option('site_comments');
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
+                <?php
+                $mp4_download_url = get_field('mp4_download_video_church', $post->ID);
+                if (!empty($mp4_download_url)) {
+                    echo "<a href='" . $mp4_download_url . "' target='_self' class='icon-download-alt pf-alignright hb_margin-left_10 cursor' download=''></a>";
+                }
+                ?>
                 <?php the_post(); ?>
                 <div class="span12">
                     <?php echo hb_get_jw_player_for_video_church($post); ?>

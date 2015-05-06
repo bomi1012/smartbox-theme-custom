@@ -13,13 +13,16 @@ $allow_comments = oxy_get_option('site_comments');
                 <a align="right" class="icon-print pf-alignright hb_margin-left_10" href="<?php echo get_permalink() . '?pfstyle=wp'; ?>" rel="nofollow"></a>
                 <!--add audio button if audio file assigned to post-->
                 <?php
-                    $audio_url = get_field('content_audio_shortcode', $post->ID);
-                    if (!empty($audio_url)) {
-                        //echo " <a align='right' class='icon-download-alt hb_margin-left_10' href='".$audio_url."' type='application/octet-stream'></a>";
-                        echo "<span id='audioSwitch' class='icon-volume-up pf-alignright hb_margin-left_10 cursor'></span>";
-                        echo "<div id='showAudio' class='hidden'>". hb_get_jw_player_for_video_church($post) ."</div>";
-                        //echo "<div id='showAudio' class='hidden'>". do_shortcode('[audio src="'. $audio_url . '"]') ."</div>";
-                    }
+                $audio_download_url = get_field('content_audio_download', $post->ID);
+                if (!empty($audio_download_url)) {
+                    echo "<a href='" . $audio_download_url . "' target='_self' class='icon-download-alt pf-alignright hb_margin-left_10 cursor' download=''></a>";
+                }
+
+                $audio_url = get_field('content_audio_shortcode', $post->ID);
+                if (!empty($audio_url)) {
+                    echo "<span id='audioSwitch' class='icon-volume-up pf-alignright hb_margin-left_10 cursor'></span>";
+                    echo "<div id='showAudio' class='hidden'>" . hb_get_jw_player_for_video_church($post) . "</div>";
+                }
                 ?>
 
                 <?php echo hb_get_assigned_taxonomy_terms($post); ?>
