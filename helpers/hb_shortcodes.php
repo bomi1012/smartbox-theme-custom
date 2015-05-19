@@ -373,7 +373,7 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
  * @return String
  *          as span12 (no section)
  */   
- function hb_get_recent_content($title, $content_type, $count, $icon){
+ function hb_get_recent_content($title, $content_type, $count, $src){
         $args = array(
         'title' => '',
         'post_type' => array($content_type),
@@ -388,12 +388,10 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
             setup_postdata($post);
             
             $date = get_the_time(get_option("date_format"));
-            $post_link = hb_get_linkformat(get_post_format());
-             $image = hb_shortcode_image(array(
-                'size' => 'round-box round-small',
-                'source' => CUSTOM_IMAGES_DIR . 'bg-icon3001.jpg',
-                'icon' => $icon,
-                'link' => $post_link
+            $image = hb_shortcode_image(array(
+                'size' => 'size-full',
+                'rounded' =>'no',
+                'source' => $src
             ));
             $content = $image;
             $title_link = hb_ui_link(array(
@@ -431,8 +429,8 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
     function hb_shortcode_newest_video($atts){
         extract(shortcode_atts(array(
         'title' => '',
-         'icon' => 'icon-pencil'), $atts));
-        return hb_get_recent_content($title, 'oxy_video', 1, $icon);
+         'src' => ''), $atts));
+        return hb_get_recent_content($title, 'oxy_video', 1, $src);
     }
     add_shortcode('hb_newest_video', 'hb_shortcode_newest_video');
  /**
@@ -446,8 +444,8 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
     function hb_shortcode_newest_sermon($atts){
          extract(shortcode_atts(array(
         'title' => '',
-        'icon' => 'icon-pencil'), $atts));
-        return hb_get_recent_content($title, 'oxy_content', 1, $icon);
+         'src' => ''), $atts));
+        return hb_get_recent_content($title, 'oxy_content', 1, $src);
     }
     add_shortcode('hb_newest_sermon', 'hb_shortcode_newest_sermon');
  /**
@@ -461,8 +459,8 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
      function hb_shortcode_newest_blog_post($atts){
           extract(shortcode_atts(array(
         'title' => '',
-         'icon' => 'icon-pencil'), $atts));
-        return hb_get_recent_content($title, 'post', 1, $icon);
+         'src' => ''), $atts));
+        return hb_get_recent_content($title, 'post', 1, $src);
     }
     add_shortcode('hb_newest_blog', 'hb_shortcode_newest_blog_post');
     /**
@@ -477,8 +475,8 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
      function hb_shortcode_newest_portfolio($atts){
           extract(shortcode_atts(array(
         'title' => '',
-         'icon' => 'icon-pencil'), $atts));
-        return hb_get_recent_content($title, 'oxy_portfolio_image' , 1, $icon);
+        'src' => ''), $atts));
+        return hb_get_recent_content($title, 'oxy_portfolio_image' , 1, $src);
     }
     add_shortcode('hb_newest_portfolio', 'hb_shortcode_newest_portfolio');
     
