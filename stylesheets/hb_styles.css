@@ -99,40 +99,40 @@ ul.bycategories li a:hover{
 Tagging cloud
 
 .tagcloudbody {
-width:800px;
-font-family:Geneva, Arial, Helvetica, sans-serif;
-font-size:11px;
-color:#666666;
-border:solid 1px #333333;
-padding:5px;
-text-align:justify;
+    width:800px;
+    font-family:Geneva, Arial, Helvetica, sans-serif;
+    font-size:11px;
+    color:#666666;
+    border:solid 1px #333333;
+    padding:5px;
+    text-align:justify;
 }
 
 .tagcloudbody a {
-text-decoration:none;
-color:#333366;
+    text-decoration:none;
+    color:#333366;
 }
 
 .tagcloudThema {
-font-weight:bold;
-font-size:16px;
-margin-bottom: 10px;
+    font-weight:bold;
+    font-size:16px;
+    margin-bottom: 10px;
 }
 
 .tag1 {
-font-size:26px;
+    font-size:26px;
 }
 .tag2 {
-font-size:16px;
+    font-size:16px;
 }
 .tag3 {
-font-size:13px;
+    font-size:13px;
 }
 .tag4 {
-font-size:20px;
+    font-size:20px;
 }
 .tag5 {
-font-size:9px;
+    font-size:9px;
 }
 
 .img_100x100_custom_mb {
@@ -145,9 +145,9 @@ font-size:9px;
     height: 78px;
 }
 
- 
 
- 
+
+
 @media (max-width: 320px){
     .super {
         font-size: 16px;
@@ -174,7 +174,7 @@ font-size:9px;
     }
 }
 
- 
+
 a:hover {
     text-decoration: underline;
 }
@@ -182,7 +182,7 @@ a:hover i {
     text-decoration: none;
 }
 
- 
+
 div.post-body .content-text p, 
 div.post-body .content-text h2,
 section.content-text-section div p,
@@ -211,8 +211,8 @@ section.content-text-section div blockquote{
 }
 
 .archive-body  {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #dcdce1;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dcdce1;
 }
 
 blockquote p {
@@ -225,7 +225,7 @@ blockquote p {
     section.content-text-section div blockquote  {
         display: none;   
     }
-    
+
     div.post-body .content-text p, 
     div.post-body .content-text h2,
     section.content-text-section div p,
@@ -240,37 +240,37 @@ blockquote.margin_bottom_25px_mb {
     margin-top: 25px;
 }
 .widget_wpb_widget_custom_search form {
-margin: 0;
+    margin: 0;
 }
 
 #toTop {
-        display:none;
-        text-decoration:none;
-        position:fixed;
-        bottom:10px;
-        right:10px;
-        overflow:hidden;
-        width:51px;
-        height:51px;
-        border:none;
-        text-indent:100%;
-        background:url("../images/totop.png") no-repeat left top;
+    display:none;
+    text-decoration:none;
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    overflow:hidden;
+    width:51px;
+    height:51px;
+    border:none;
+    text-indent:100%;
+    background:url("../images/totop.png") no-repeat left top;
 }
 
 #toTopHover {
-        background:url("../images/totop.png") no-repeat left -51px;
-        width:51px;
-        height:51px;
-        display:block;
-        overflow:hidden;
-        float:left;
-        opacity: 0;
-        -moz-opacity: 0;
-        filter:alpha(opacity=0);
+    background:url("../images/totop.png") no-repeat left -51px;
+    width:51px;
+    height:51px;
+    display:block;
+    overflow:hidden;
+    float:left;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:alpha(opacity=0);
 }
 
 #toTop:active, #toTop:focus {
-        outline:none;
+    outline:none;
 }
 
 .padding_a_language {
@@ -286,7 +286,7 @@ margin: 0;
 }
 
 .hb_margin-left_10 {
-   margin-left: 10px; 
+    margin-left: 10px; 
 }
 
 span.cursor {
@@ -634,7 +634,145 @@ Media Queries
     }
 }
 
+#masthead .nav.compact-nav > li > a {
+    font-weight: 400;
+    color: #222;
+    font-family: Open Sans, Arial, sans-serif;
+    padding-right: 1.5em;
+}
+#masthead .navbar-inner{
+    border-bottom: 6px solid grey;
+}
+p{
+    font-family:"Open Sans",Helvetica,Arial,sans-serif;
+    font-weight:300;
+    color:black;
+}
+nav a {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight:600;
+}
+h3{
+    color:rgb(79, 79, 79);
+}
+a{
+    color: rgb(178, 150, 55);
+}
+#footer{
+    background-color: #23282D;
+    padding:1.5em 0;
+}
+#footer img{
+    vertical-align: none;
+}
+.padding_a_language{
+    color: white;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-left:-1em;
+    padding-bottom:2em;
+}
+.textwidget {
+    padding-top:0.5em;
+}
+.topics{
+    border-top: 45px solid #23282D;
+}
+.round-box.no-rounded .box-inner::after {
+    box-shadow: none;
+}
+#footer a, #footer .textwidget {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    text-shadow: none;
+    color: white;
+}
+.sidebar-widget p{
+    color:white;
+    font-size: 0.8em;
+    letter-spacing: 0.05em;
+    line-height: 1.6em;
+}
+.post-info h5 {
+    background-color: transparent;
+}
 
+.video-list{
+    list-style: outside none none;
+    margin: 0em;
+}
+.video-list li{
+    display:inline;
+    padding-right:0.5em;
+}
+.video-sec{
+    background:#F3F3F3;
+}
+
+.topics h2{
+    color:rgb(168, 132, 8);
+    text-transform: initial;
+    font-size: 1.3em;
+}
+.published{
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+    font-size: 0.7em;
+    font-weight: 400;
+    border-bottom: 1px solid grey;
+    width: 70%;
+}
+.date{
+    font-family:"Open Sans", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1em;
+    letter-spacing: 0.1em;
+}
+.topics a{
+    color:grey;
+}
+.readmore{
+    font-family: "Roboto", Arial, Helvetica !important;
+    border-top: 1px solid rgba(128, 128, 128, 0.63);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.63);
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: 400;
+    color: grey  !important;
+}
+.btn-inverse {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #9F8234;
+    box-shadow: none;
+    color: #9F8234;
+    font-family: Roboto;
+    font-size: 0.9em;
+    border-radius: 3px;
+}
+h2 {
+    font-size: 1.2em;
+    margin: 0px;
+    line-height: 1.5em;
+    padding-bottom: 1em;
+    font-weight:400;
+}
+
+.section section-padded .row-fluid{
+    padding:1em 0;
+}
+.section-padded {
+    padding: 80px 0;
+}
+.frame{
+    background-color: #FFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 2px;
+    padding: 7px;
+    display: inline-block;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.04);
+}
 
 
 
