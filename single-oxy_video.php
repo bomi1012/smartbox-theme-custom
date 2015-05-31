@@ -15,7 +15,9 @@ $allow_comments = oxy_get_option('site_comments');
                 <div class="span12" style = "color:#FFA500;">
                     <?php echo get_field('quote'); ?>
                 </div>
-                <?php echo hb_ui_video_content($post); ?>
+                <?php 
+                 the_title('<h1>', '</h1>');
+                 echo hb_ui_video_content($post); ?>
                 <?php oxy_wp_link_pages(array('before' => '<div class="pagination pagination-centered">', 'after' => '</div>')); ?>
                 <?php echo hb_ui_related_posts(get_the_ID()); ?>
                 <?php if ($allow_comments == 'posts' || $allow_comments == 'all') comments_template('', true); ?>
