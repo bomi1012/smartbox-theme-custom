@@ -17,7 +17,7 @@
                 $content = apply_filters('the_content', $post->post_content);
                 echo $content;
             } else {
-                the_title('<h1>', '</h1>') + the_content();
+                the_content();
             }
             ?>
         </div>

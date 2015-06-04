@@ -391,7 +391,8 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
             $image = hb_shortcode_image(array(
                 'size' => 'size-full',
                 'rounded' =>'no',
-                'source' => $src
+                'source' => $src,
+                'link'=> hb_get_linkformat(get_post_format())
             ));
             $content = $image;
             $title_link = hb_ui_link(array(

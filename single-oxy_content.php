@@ -9,7 +9,7 @@ $allow_comments = oxy_get_option('site_comments');
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
-                <!--add print friendly(pdf, email) button-->
+                 <!--add print friendly(pdf, email) button-->
                 <a align="right" class="icon-print pf-alignright hb_margin-left_10" href="<?php echo get_permalink() . '?pfstyle=wp'; ?>" rel="nofollow"></a>
                 <!--add audio button if audio file assigned to post-->
                 <?php
@@ -27,9 +27,7 @@ $allow_comments = oxy_get_option('site_comments');
 
                 <?php echo hb_get_assigned_taxonomy_terms($post); ?>
                 <?php the_post(); ?>
-                <div class="span12" style = "color:#FFA500;">
-                    <?php echo get_field('quote'); ?>
-                </div>
+                <?php the_title('<h1 style="text-align: center">', '</h1>') ?>
                 <?php get_template_part('partials/content-text', get_post_format()); ?>
                 <?php oxy_wp_link_pages(array('before' => '<div class="pagination pagination-centered">', 'after' => '</div>')); ?>
                 <?php echo hb_ui_related_posts(get_the_ID()); ?>
