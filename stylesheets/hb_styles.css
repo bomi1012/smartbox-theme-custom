@@ -780,19 +780,58 @@ h2 {
     padding: 0px 10px;
 }
 
+/*
+ * 04.06.2015
+ */
 
+.topics{
+border:none;
+}
+.topics h2 a{
+color:rgb(178, 150, 55);
+}
 
+.video-sec {
+   background: #23282D none repeat scroll 0% 0%;
+}
+ .video-sec h2, .video-sec p{
+  color: rgb(207, 206, 203);
+  font-weight: 400;
+}
+.video-sec h1{
+  color: rgb(159, 130, 52);
+  padding-bottom: 0em;
+  font-size: 1em;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  margin-top: -1.5em;
+}
+.video-sec h2{
+ padding-bottom: 0em;
+}
+.themes .accordion-heading{
+box-shadow: none;
+border-bottom: 1px solid #CCC;
+border-top:none;
+border-left:none;
+border-right:none;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+.themes .accordion-heading .accordion-toggle {
+padding: 0px;
+margin-top: 1em;
+}
+.themes .accordion-inner {
+    background-color: #F6F6F6;
+    box-shadow: none;
+}
+.themes h3{
+    line-height: 24px;
+    margin: 2em 0px 1em;
+    font-size: 1.5em;
+    font-family: Open Sans;
+    font-weight: 400;
+    text-transform: capitalize;
+   color:black;}
