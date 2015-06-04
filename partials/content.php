@@ -41,7 +41,7 @@
                 $content = apply_filters('the_content', $post->post_content);
                 echo $content;
             } else {
-                the_content();
+                the_title('<h1>', '</h1>') + the_content();
             }
             ?>
             <?php get_template_part( 'partials/social-links', null ); ?>
