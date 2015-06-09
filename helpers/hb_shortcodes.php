@@ -291,66 +291,6 @@ function hb_shortcode_recent_content($atts) {
 add_shortcode('hb_recent_content', 'hb_shortcode_recent_content');
 
 /**
- * @description used for example on main page for section with random video
- * @param array $atts
- * @return string
- */
-function hb_shortcode_hero_section_with_video($atts) {
-    extract(shortcode_atts(array(
-        'image' => '',
-        'title' => '',
-        'summary' => '',
-        'random_posts' => 'true',
-        'post_video' => '',
-        'taxonomy_slug' => ''
-                    ), $atts));
-
-    $title = $title === null ? oxy_get_option('blog_title') : $title;
-
-    //take random video post and show it
-    if ($random_posts) {
-        $args = array(
-            'post_type' => 'oxy_video',
-            'showposts' => 1,
-            'orderby' => 'rand'
-        );
-        $my_query = new wp_query($args);
-        $post_video = $my_query->post;
-    }
-
-    if (!empty($post_video)) {
-        $title = $post_video->post_title;
-        $summary = hb_limit_string($post_video->post_content, 50);
-        $shortcode = get_field('video_shortcode', $post_video->ID);
-    }
-
-    if (!empty($image)) {
-        $img_attachment = wp_get_attachment_image_src($image);
-        $image = $img_attachment[0];
-    } else {
-        $image = hb_get_taxonomy_image('teaching_topics', $taxonomy_slug, hb_enum_taxonomy_image_type::video_background_image);
-    }
-
-    $title_ui = hb_ui_title(array(
-        'tag' => 1,
-        'class' => 'animated fadeinup delayed text-center',
-        'content' => $title
-    ));
-    $text_left = oxy_shortcode_layout(NULL, do_shortcode('<p>' . $summary . '</p>'), 'span4  margin-top margin-bottom');
-    $row = oxy_shortcode_row(NULL, $text_left . hb_create_videowrapper_div($shortcode), NULL);
-    $super_hero_unit = oxy_shortcode_layout(NULL, do_shortcode($title_ui . $row), 'container-fluid super-hero-unit');
-    
-    return hb_get_section_background_image_simple(
-            array(
-                'class' => 'section section-padded section-dark',
-                'data_background' => 'url(' . $image . ') no-repeat top',
-                'image_link' => 'background: url(' . $image . ') 50% 0% no-repeat;',
-                'content' => $super_hero_unit
-    ));
-}
-add_shortcode('hero_section_with_video', 'hb_shortcode_hero_section_with_video');
-
-/**
  * @description used for integration of google calendar into section
  * @param array $atts
  * @return String
@@ -486,14 +426,15 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
  * @param array $atts
  * @return string
  */
-function hb_shortcode_section_with_video($atts) {
+function hb_shortcode_video_section($atts) {
     extract(shortcode_atts(array(
         'title' => '',
         'summary' => '',
         'random_posts' => 'true',
         'post_video' => '',
         'taxonomy_slug' => '',
-        'style'=>''
+        'style'=>'',
+        'class'=>''
                     ), $atts));
 
     $title = $title === null ? oxy_get_option('blog_title') : $title;
@@ -514,15 +455,12 @@ function hb_shortcode_section_with_video($atts) {
         $summary = hb_limit_string($post_video->post_content, 50);
         $shortcode = get_field('video_shortcode', $post_video->ID);
     }
-
-    $title_ui = hb_ui_title(array(
-        'tag' => 1,
-        'class' => 'text-center',
-        'content' => $title
-    ));
-    $text_left = oxy_shortcode_layout(NULL, do_shortcode('<p>' . $summary . '</p>'), 'span4  margin-top margin-bottom');
-    $row = oxy_shortcode_row(NULL, $text_left . hb_create_videowrapper_div($shortcode), NULL);
-    return  hb_get_custom_shortcode_section($atts, do_shortcode($title_ui . $row));
+    $section_title = '<h1 style="border-bottom: 1px solid #9F8234;padding-top: 0.5em">'.__('Video', THEME_FRONT_TD).'</h1>';
+    $content = '<div>'. $section_title . '<h2>'.$title.'</h2><p style="border-bottom: 1px solid #9F8234;padding: 1em 0">' . $summary . '</p></div>' ;
+    $text_right = oxy_shortcode_layout(NULL, do_shortcode($content), 'span6 ');
+    $video_left = oxy_shortcode_layout(NULL, hb_create_videowrapper_div($shortcode, 'span6'), '');
+    $row = oxy_shortcode_row(NULL, $video_left. $text_right, NULL);
+    return  hb_get_custom_shortcode_section($atts, do_shortcode($row));
    
 }
-add_shortcode('section_with_video', 'hb_shortcode_section_with_video');
+add_shortcode('hero_section_with_video', 'hb_shortcode_video_section');
