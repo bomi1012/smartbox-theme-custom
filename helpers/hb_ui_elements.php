@@ -361,6 +361,7 @@ function hb_get_flexi_slider_for_taxonomy_topic_page($slug_or_id) {
         $atts[random_posts] = false;
         $atts[post_video] = $slide;
         $atts[taxonomy_slug] = $slug_or_id;
+        $atts['class']="video-sec";
         $output .= hb_shortcode_hero_section_with_video($atts);
         $output .= '</li>';
     }

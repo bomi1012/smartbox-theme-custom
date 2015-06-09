@@ -10,13 +10,13 @@
             <h2 class="small-screen-center">
                 <?php if ( is_single() ) : ?>
                     <?php $post->post_title; ?>
-                <?php else : ?>
+                <?php else :  ?>
                     <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', THEME_FRONT_TD ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
                         <?php $post->post_title; ?>
                     </a>
                 <?php endif; // is_single() ?>
             </h2>
-            <?php get_template_part( 'partials/post-extras' ); ?>
+            <?php the_title('<h2>', '</h2>') ; get_template_part( 'partials/post-extras' ); ?>
         </div>
         <div class="entry-content">
             <?php
@@ -41,7 +41,7 @@
                 $content = apply_filters('the_content', $post->post_content);
                 echo $content;
             } else {
-                the_title('<h1>', '</h1>') + the_content();
+                the_content();
             }
             ?>
             <?php get_template_part( 'partials/social-links', null ); ?>

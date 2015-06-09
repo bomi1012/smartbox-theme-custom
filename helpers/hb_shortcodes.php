@@ -426,7 +426,7 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
  * @param array $atts
  * @return string
  */
-function hb_shortcode_video_section($atts) {
+function hb_shortcode_hero_section_with_video($atts) {
     extract(shortcode_atts(array(
         'title' => '',
         'summary' => '',
@@ -463,4 +463,4 @@ function hb_shortcode_video_section($atts) {
     return  hb_get_custom_shortcode_section($atts, do_shortcode($row));
    
 }
-add_shortcode('hero_section_with_video', 'hb_shortcode_video_section');
+add_shortcode('hero_section_with_video', 'hb_shortcode_hero_section_with_video');
