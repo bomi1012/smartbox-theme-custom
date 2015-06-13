@@ -11,6 +11,10 @@
 
 @import url(http://fonts.googleapis.com/css?family=Reenie+Beanie); */
 
+#audioSwitch {
+    color: rgb(178, 150, 55);
+}
+
 div#blockRigthOben{
     font-size: 14px;
     border-left-style: dashed;
