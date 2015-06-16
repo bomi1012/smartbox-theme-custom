@@ -7,13 +7,7 @@
 global $post;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('row-fluid'); ?>>    
-        <div class="span12 post-body">
-            <div class="post-head">
-                <h2 class="small-screen-center">
-                    <?php the_title(); ?>
-                </h2>
-            </div>
-            <div class="entry-content">
+        <div class="span12 post-media entry-content">
                 <?php
                 if (is_search()):
                     $content = relevanssi_the_excerpt();
@@ -24,11 +18,9 @@ global $post;
                 if (empty($video_shortcode))
                     $output = '<div>' . hb_get_jw_player_for_video_church($post) . '</div>';
                 else
-                    $output = '<div>' . hb_create_videowrapper_div($video_shortcode, $span = "span12", "1250", "703") . '</div>';
-                $output .= '<div class="span12" style="margin-top: 25px;">' . $content . '</div>';
+                    $output = hb_create_videowrapper_div($video_shortcode, $span = "span12", "1250", "703");
                 echo $output;
                 ?>
-            </div>
         </div>
 </article>
 
