@@ -199,7 +199,7 @@ function hb_create_section_with_text_items($my_query, $atts = null) {
 function hb_ui_video_content($post) {
     $video_shortcode = get_field('video_shortcode', $post->ID);
     $content = $post->post_content;
-    return hb_create_videowrapper_div($video_shortcode) . oxy_shortcode_layout(NULL, $content, 'span4 hb_video_archive_single');
+    return hb_create_videowrapper_div($video_shortcode); // . oxy_shortcode_layout(NULL, $content, 'span4 hb_video_archive_single');
 }
 
 /**
