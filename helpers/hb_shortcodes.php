@@ -464,3 +464,58 @@ function hb_shortcode_hero_section_with_video($atts) {
    
 }
 add_shortcode('hero_section_with_video', 'hb_shortcode_hero_section_with_video');
+function hb_get_hot_topics($atts) {
+   // setup options
+    extract(shortcode_atts(array(
+        'title' => '',
+        'cat' => null,
+        'style' => '',
+        'class'=>''), $atts));
+
+   $args = array(
+        'post_type' => array('oxy_content'),
+        'showposts' => 4, // Number of related posts that will be shown.  
+        'orderby' => 'date'
+    );
+    $my_query = new wp_query($args);
+    $item_num=1;
+    $output='';
+    if ($my_query->have_posts()) {
+        global $post;
+        $output .='<ul class="unstyled row-fluid"><div style="margin-top: 2em;">';
+        while ($my_query->have_posts()) {
+            $my_query->the_post();
+            setup_postdata($post);
+            if ($item_num > 2) {
+                    $output.= '</ul><ul class="unstyled row-fluid"><div style="margin-top: 2em;">';
+                    $item_num = 1;
+                }
+            $output .='<li class="span6">';
+            $publishedOn = __('Published on', THEME_FRONT_TD)." ".get_the_time(get_option("date_format"));
+            $output .= '<h2><a href="'.hb_get_linkformat(get_post_format()).'">'.get_the_title().'</a></h2>';
+            $output .='<p style="font-size: 0.8em; margin-top: -1.5em;">'.$publishedOn.'</p>';
+            $content = get_field('summary', $post->ID);
+            
+            $text = apply_filters('the_content', $content);
+            $output.='<p>' . apply_filters('the_content', $text) . '</p>';
+            $term_list = wp_get_post_terms($post->ID, 'teaching_topics');
+            $terms = "";
+            foreach ( $term_list as $term ) {
+                $term_link = get_term_link($term);
+                if(empty($terms)){
+                $terms.= '<a href="'.esc_url($term_link).'">'.$term->name .'</a> ';
+                } else {
+                 $terms.= '| <a href="'.esc_url($term_link).'">'.$term->name .'</a> ';
+               }
+            }
+            $output.='<p class="readmore">'.$terms.'</p></li>';
+            $item_num++;
+           }
+            $output .= '</ul>';
+
+    }
+    wp_reset_postdata();
+    return  oxy_shortcode_section($atts, $output);
+}
+add_shortcode('hb_hot_topics', 'hb_get_hot_topics');
+
