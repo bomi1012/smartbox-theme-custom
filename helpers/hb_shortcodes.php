@@ -491,7 +491,7 @@ function hb_get_hot_topics($atts) {
                     $item_num = 1;
                 }
             $output .='<li class="span6">';
-            $publishedOn = __('Published on', THEME_FRONT_TD)." ".get_the_time(get_option("date_format"));
+            $publishedOn = __('Published_on', THEME_FRONT_TD)." ".get_the_time(get_option("date_format"));
             $output .= '<h2><a href="'.hb_get_linkformat(get_post_format()).'">'.get_the_title().'</a></h2>';
             $output .='<p style="font-size: 0.8em; margin-top: -1.5em;">'.$publishedOn.'</p>';
             $content = get_field('summary', $post->ID);
