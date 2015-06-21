@@ -10,17 +10,17 @@ $allow_comments = oxy_get_option('site_comments');
         <div class="row-fluid">
             <div class="span12">
                  <!--add print friendly(pdf, email) button-->
-                <a align="right" class="icon-print pf-alignright hb_margin-left_10" href="<?php echo get_permalink() . '?pfstyle=wp'; ?>" rel="nofollow"></a>
+                <a align="right" class="icon-print pf-alignright hb_margin-left_10 icon-2x" href="<?php echo get_permalink() . '?pfstyle=wp'; ?>" rel="nofollow"></a>
                 <!--add audio button if audio file assigned to post-->
                 <?php
                 $audio_download_url = get_field('content_audio_download', $post->ID);
                 if (!empty($audio_download_url)) {
-                    echo "<a href='" . $audio_download_url . "' target='_self' class='icon-download-alt pf-alignright hb_margin-left_10 cursor' download=''></a>";
+                    echo "<a href='" . $audio_download_url . "' target='_self' class='icon-download-alt pf-alignright hb_margin-left_10 cursor icon-2x' download=''></a>";
                 }
 
                 $audio_url = get_field('content_audio_shortcode', $post->ID);
                 if (!empty($audio_url)) {
-                    echo "<span id='audioSwitch' class='icon-volume-up pf-alignright hb_margin-left_10 cursor'></span>";
+                    echo "<span id='audioSwitch' class='icon-volume-up pf-alignright hb_margin-left_10 cursor icon-2x'></span>";
                     echo "<div id='showAudio' class='hidden'>" . hb_get_jw_player_for_video_church($post) . "</div>";
                 }
                 ?>
