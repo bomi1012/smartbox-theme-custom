@@ -457,6 +457,11 @@ function hb_shortcode_hero_section_with_video($atts) {
     }
     $section_title = '<h1 style="border-bottom: 1px solid #9F8234;padding-top: 0.5em">'.__('Video', THEME_FRONT_TD).'</h1>';
     $content = '<div>'. $section_title . '<h2>'.$title.'</h2><p style="border-bottom: 1px solid #9F8234;padding: 1em 0">' . $summary . '</p></div>' ;
+    $videoarchive_page = get_page_by_path("videoarchive");
+    if($videoarchive_page !=null){
+        $link = '<a class="btn btn-inverse btn-mini" href="videoarchive">'.get_the_title($videoarchive_page).'</a>';
+        $content .= $link;
+    }
     $text_right = oxy_shortcode_layout(NULL, do_shortcode($content), 'span6 ');
     $video_left = oxy_shortcode_layout(NULL, hb_create_videowrapper_div($shortcode, 'span6'), '');
     $row = oxy_shortcode_row(NULL, $video_left. $text_right, NULL);
