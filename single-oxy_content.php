@@ -27,7 +27,7 @@ $allow_comments = oxy_get_option('site_comments');
 
                 <?php echo hb_get_assigned_taxonomy_terms($post); ?>
                 <?php the_post(); ?>
-                <?php the_title('<h1 style="text-align: center">', '</h1>') ?>
+                <?php the_title('<h1>', '</h1>') ?>
                 <?php get_template_part('partials/content-text', get_post_format()); ?>
                 <?php oxy_wp_link_pages(array('before' => '<div class="pagination pagination-centered">', 'after' => '</div>')); ?>
                 <?php echo hb_ui_related_posts(get_the_ID()); ?>
