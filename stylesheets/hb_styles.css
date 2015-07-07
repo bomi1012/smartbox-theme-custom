@@ -186,16 +186,6 @@ a:hover i {
     text-decoration: none;
 }
 
-
-div.post-body .content-text p, 
-div.post-body .content-text h2,
-section.content-text-section div p,
-section.content-text-section div h2{
-    padding-left: 30%;
-    margin-bottom: 35px;
-    margin-right: 5%;
-}
-
 div.post-body .content-text h2,
 section.content-text-section div h2 {
     font-weight: 100;
@@ -203,16 +193,6 @@ section.content-text-section div h2 {
     margin: 75px 0px 15px 0px;
 }
 
-div.post-body .content-text blockquote,
-section.content-text-section div blockquote{
-    color: #c09853;
-    float: left;
-    width: 25%;
-    margin-top: -60px;
-    border-left: 3px solid #c09853;
-    font-size: 18px;
-    line-height: 1.4em;
-}
 
 .archive-body  {
     margin-bottom: 20px;
