@@ -588,7 +588,7 @@ function hb_get_custom_shortcode_section($atts , $content = '') {
                             alt='bottle' width='67' height='80'>
                     </p>
                     <p style='font-size: 1em;border-top: 1px solid grey;text-align: center;padding-top: 1.5em;font-style: italic'>
-                        Следующие проповеди по теме:
+                       " . oxy_filter_title( $title ) . "
                     </p>";
     
             
