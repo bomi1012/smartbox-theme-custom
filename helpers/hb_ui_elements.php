@@ -582,7 +582,24 @@ function hb_get_custom_shortcode_section($atts , $content = '') {
         break;
     }
 
-    $section_title = ( $title != '' ) ? '<'.$header_size.' class="double-line">' . oxy_filter_title( $title ) . '</'.$header_size.'>' : '';
-    return '<section class="section section-padded' . $style . ' ' . $class . '"><div class="container-fluid">' . $section_title . '<div class="row-fluid">'.do_shortcode( $content ) .'</div></div></section>';
+    $section_title = "<p style='margin-bottom: -2em'>
+                        <img class='aligncenter size-full wp-image-5143' 
+                            src='http://holybunch.com/wp-content/uploads/2015/06/bottle1.gif' 
+                            alt='bottle' width='67' height='80'>
+                    </p>
+                    <p style='font-size: 1em;border-top: 1px solid grey;text-align: center;padding-top: 1.5em;font-style: italic'>
+                        Следующие проповеди по теме:
+                    </p>";
+    
+            
+            
+//            ( $title != '' ) ? '<'.$header_size.' class="double-line">'
+//            . oxy_filter_title( $title ) . '</'.$header_size.'>' : '';
+    
+    
+    return '<section class="section section-padded' . $style . ' '
+            . $class . '">
+                <div class="container-fluid">' . $section_title .
+            '<div class="row-fluid">'.do_shortcode( $content ) .'</div></div></section>';
 }
 ?>
