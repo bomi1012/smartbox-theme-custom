@@ -227,8 +227,11 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
     $count = count($text_items);
 
     if (isset($taxonomy_term->description)) {
-        $output = oxy_shortcode_layout(NULL, $taxonomy_term->description, 'container-fluid hb_taxonomy_desc');
+        $output_desc = oxy_shortcode_layout(NULL, $taxonomy_term->description, 'container-fluid hb_taxonomy_desc');
     }
+    $output = $output_desc;
+    $output .= '<p style="margin-bottom: -2em"><img class="aligncenter size-full wp-image-5143" src="http://holybunch.com/wp-content/uploads/2015/06/bottle1.gif" alt="bottle" width="67" height="80" /></p>';
+    $output .= '<p style="font-size: 1em;border-top: 1px solid grey;text-align: center;padding-top: 1.5em;font-style: italic"></p>';
 
     if ($count >= 1 && $count <= 3) {
         $output .= hb_ui_items($text_items);
@@ -245,8 +248,7 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
         $output .= hb_create_section_with_text_items(new WP_Query($query));
     }
 
-    $atts[title] = __('In this topic ...', THEME_FRONT_TD); //'В этой теме ...';        
-    $output = hb_get_custom_shortcode_section($atts, $output);
+    
     $output .= hb_get_flexi_slider_for_taxonomy_topic_page($taxonomy_term->slug);
     return $output;
 }
@@ -270,11 +272,30 @@ function hb_ui_items($text_items) {
             break;
     }
     foreach ($text_items as $value) {
-        $output .= hb_ui_posts_as_quote($value, $span);
+        $output .= hb_ui_posts($value, $span);
     }   
-    return oxy_shortcode_layout(NULL, $output, 'container-fluid');
+    return oxy_shortcode_row(NULL, $output, 'well');
 }
-
+function hb_ui_posts($post, $span = 'span4', $summary = '') {
+    if (empty($summary)) {
+        $summary = hb_get_post_summary_mini($post);
+    }
+    $content = hb_ui_title(array(
+                'tag' => 3,
+                'content' => hb_ui_link(array(
+                    'link' => get_post_permalink($post->ID, false, false),
+                    'content' => $post->post_title
+        ))));
+    $content .=  $summary ;
+    $content .=  hb_create_ui_btn(get_post_permalink($post->ID, false, false), 'More');
+                    
+       
+    
+    return oxy_shortcode_layout(NULL, $content, $span);
+}
+function hb_create_ui_btn($link, $btn_label){
+    return '<a class="btn btn-inverse btn-mini" href="'.$link.'">'.__($btn_label, THEME_FRONT_TD).' </a>';
+}
 /**
  * @description get summary of post as quote, used on taxonomy topic page 
  * @param post $post <i>post instance of text post</i>
