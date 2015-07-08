@@ -2,7 +2,7 @@
 /* Displays a single post of type oxy_text */
 get_header();
 global $post;
-oxy_create_hero_section(hb_get_post_banner_image($post), $post->post_title);
+//oxy_create_hero_section(hb_get_post_banner_image($post), $post->post_title);
 $allow_comments = oxy_get_option('site_comments');
 ?>
 <section class="section section-padded">
