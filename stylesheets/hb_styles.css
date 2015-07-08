@@ -266,7 +266,10 @@ blockquote.margin_bottom_25px_mb {
 }
 
 .hb_taxonomy_desc {
-    margin-bottom: 45px;
+    font-weight: 400;
+    padding: 0.5em 2em;
+    padding-top: 2.5em;
+    border-top: 1px solid grey
 }
 
 .hb_margin-left_10 {
