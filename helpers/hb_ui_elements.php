@@ -248,7 +248,7 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
         $output .= hb_create_section_with_text_items(new WP_Query($query));
     }
 
-    
+    $output = hb_get_custom_shortcode_section($atts, $output);
     $output .= hb_get_flexi_slider_for_taxonomy_topic_page($taxonomy_term->slug);
     return $output;
 }
