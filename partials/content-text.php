@@ -8,7 +8,7 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('row-fluid'); ?>>
-    <div class="<?php echo 'span12'; ?> post-body">
+    <div class="<?php echo 'span12'; ?>">
         <div class="entry-content content-text print-only">
             <?php
             $current_url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];

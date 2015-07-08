@@ -440,7 +440,15 @@ section-padded {
 blockquote p {
     line-height: 1.7em;
 }
-
+blockquote {
+    line-height: 1.7em;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 2.5em;
+    padding: 1.5em;
+    border-left: 5px solid rgb(254, 203, 203);
+}
 .bible-quote p{
     float:left;
     font-family: "Merriweather",serif;
