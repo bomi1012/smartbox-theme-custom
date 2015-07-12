@@ -829,4 +829,19 @@ margin-top: 1em;
     font-family: Open Sans;
     font-weight: 400;
     text-transform: capitalize;
-   color:black;}
+   color:black;
+}
+div.row-fluid h1.hb_taxonomy_topic_title{
+   font-family: Roboto Slab,Arial, Helvetica, sans-serif;
+   font-size: 4em; 
+   padding-bottom: 0.5em;
+   text-transform: none;
+}
+
+div.row-fluid p.hb_taxonomy_topic_sermons{
+    font-size: 1em;
+    border-top: 1px solid grey;
+    text-align: center;
+    padding-top: 1.5em;
+    font-style: italic;
+}

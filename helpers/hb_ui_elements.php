@@ -167,12 +167,9 @@ function hb_create_section_with_text_items($my_query, $atts = null, $related = f
                 ))
             ));
             
-            $innen.= apply_filters('the_content', hb_get_post_summary_mini($post) . 
-                    hb_ui_link(array(
-                'link' => get_permalink(),
-                'content' => __('Read more', THEME_FRONT_TD),
-                'class' => 'more-link'
-            )));
+            $innen.= apply_filters('the_content', hb_get_post_summary_mini($post));
+            $innen.=hb_create_ui_btn(get_permalink(), 'More'); 
+                
           
             $output_loop .= oxy_shortcode_layout(NULL, $innen, $span);
             $item_num++;
@@ -219,7 +216,8 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
             array(
                 'taxonomy' => 'teaching_topics',
                 'field' => 'slug',
-                'terms' => $taxonomy_term->slug
+                'terms' => $taxonomy_term->slug,
+                'operator' => 'IN'
             )
         ),
         'orderby' => 'menu_order',
@@ -232,10 +230,10 @@ function hb_ui_taxonomy_topic_page($taxonomy_term) {
     if (isset($taxonomy_term->description)) {
         $output_desc = oxy_shortcode_layout(NULL, $taxonomy_term->description, 'container-fluid hb_taxonomy_desc');
     }
-    $output_title='<h1 style="font-family: Roboto Slab,Arial, Helvetica, sans-serif;font-size: 4em; padding-bottom: 0.5em">'.$taxonomy_term->name.'</h1>';
+    $output_title='<h1 class="hb_taxonomy_topic_title">'.$taxonomy_term->name.'</h1>';
     $output = $output_title . $output_desc;
-    $output .= '<p style="margin-bottom: -2em"><img class="aligncenter size-full wp-image-5143" src="http://holybunch.com/wp-content/uploads/2015/06/bottle1.gif" alt="bottle" width="67" height="80" /></p>';
-    $output .= '<p style="font-size: 1em;border-top: 1px solid grey;text-align: center;padding-top: 1.5em;font-style: italic"></p>';
+    $output .= '<p style="margin-bottom: -2em"><img class="aligncenter size-full wp-image-5143" src="http://holybunch.com/wp-content/uploads/2015/06/bottle1.gif" width="67" height="80"/></p>';
+    $output .= '<p class="hb_taxonomy_topic_sermons">'.__('Sermons_to_the_topic', THEME_FRONT_TD).'</p>';
 
     if ($count >= 1 && $count <= 3) {
         $output .= hb_ui_items($text_items);
@@ -422,25 +420,15 @@ function hb_get_post_summary_mini($post) {
     //to call advanced custom fields plugin api and provide id of post
     switch ($post->post_type) {
         case 'oxy_video':
-            $summary = get_field('video_summary_mini', $post->ID);
-            if (empty($summary)) {
-                $summary = get_field('video_summary', $post->ID);
-                $summary = hb_limit_string($summary, 40);
-            }
+            $summary = get_field('video_summary', $post->ID);
+           //$summary = hb_limit_string($summary, 40);
             break;
         case 'oxy_audio':
-            $summary = get_field('audio_summary_mini', $post->ID);
-            if (empty($summary)) {
-                $summary = get_field('audio_summary', $post->ID);
-                $summary = hb_limit_string($summary, 40);
-            }
+            $summary = get_field('audio_summary', $post->ID);
             break;
         case 'oxy_content':
-            $summary = get_field('summary_mini', $post->ID);
-            if (empty($summary)) {
-                $summary = get_field('summary', $post->ID);
-                $summary = hb_limit_string($summary, 40);
-            }
+            $summary = get_field('summary', $post->ID);
+            $summary = hb_limit_string($summary, 55);
             break;
         default :
             break;

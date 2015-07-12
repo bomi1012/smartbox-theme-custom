@@ -344,13 +344,13 @@ add_shortcode('hb_add_into_wrapper', 'hb_shortcode_add_element_into_wrapper');
             $content .='<h3 class="text-center">'.$title.'</h3>';
             $content .= '<p><b>'. $title_link .' </b>';
             if($content_type == "oxy_content"){
-                $content .= strip_tags(get_field('summary', $post->ID));
+                $summary = oxy_limit_excerpt(strip_tags(get_field('summary', $post->ID)), 40);
+                $content .= $summary.'</p>';
             }else {
                  $content .=oxy_limit_excerpt(strip_tags(get_the_content()), 40).'</p>';
             }
             
-            $content.='<a class="btn btn-inverse btn-mini" href="'
-                    . get_permalink().'">'.__('More', THEME_FRONT_TD).' </a></li>';
+            $content.= hb_create_ui_btn(get_permalink(),'More');
 
             $text = apply_filters('the_content', $content);
 
