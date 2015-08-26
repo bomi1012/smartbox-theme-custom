@@ -222,70 +222,72 @@ function hb_get_linkformat($post_format) {
  * @param post of type oxy_video_church $post
  * @return string
  */
-function hb_get_jw_player_for_video_church($post){
-    $mp3_url = get_field('content_audio_shortcode', $post->ID);
-    $rtmp_url = get_field('rtmp_url', $post->ID);
-    $smil_url = get_field('smil_url', $post->ID);
-    $m3u8_url = get_field('m3u8_url', $post->ID);
-    $android_url = get_field('android_url', $post->ID);
-    
-    $player_id = guid();
-    $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
-    if(!empty($android_url)){
-        $content = do_shortcode("[button icon=\"icon-film\" type=\"primary\" size=\"btn-medium\" label=\"Play on android\" link=\"$android_url\"]");
-        $output .= $content;   
+function hb_get_jw_player_for_video_church($post, $mp3 = NULL){
+    if ($mp3 != NULL) {
+        $mp3_url = $mp3;
+    } else {
+        $mp3_url = get_field('content_audio_shortcode', $post->ID);
     }
+        $rtmp_url = get_field('rtmp_url', $post->ID);
+        $smil_url = get_field('smil_url', $post->ID);
+        $m3u8_url = get_field('m3u8_url', $post->ID);
+        $android_url = get_field('android_url', $post->ID);
     
-    //Detect special conditions devices
-    $iPod = stripos($_SERVER['HTTP_USER_AGENT'], "iPod");
-    $iPhone = stripos($_SERVER['HTTP_USER_AGENT'], "iPhone");
-    $iPad = stripos($_SERVER['HTTP_USER_AGENT'], "iPad");
-    $Android = stripos($_SERVER['HTTP_USER_AGENT'], "Android");
-    $webOS = stripos($_SERVER['HTTP_USER_AGENT'], "webOS");
-    
-    if(empty($mp3_url))$div_class = "videoWrapper";
-    
-    $output .= "<div class='".$div_class."'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
-    $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({";
-    //$output .= "],";
-    $add_comma = false;    
-    $output .= "playlist: [{ title: \"Play Video\", sources: [ ";
-    if(!empty($smil_url)){
-        //if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$smil_url."\" }";
-        $add_comma = true;
-    }
-    
-    if(!empty($m3u8_url)){
-        if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$m3u8_url."\"}";
-        $add_comma = true;
-    }
+        $player_id = guid();
+        $output = "<script src=\"http://holybunch.com/jwplayer/jwplayer.js\" type=\"text/javascript\"></script>";
+        if(!empty($android_url)){
+            $content = do_shortcode("[button icon=\"icon-film\" type=\"primary\" size=\"btn-medium\" label=\"Play on android\" link=\"$android_url\"]");
+            $output .= $content;   
+        }
 
-    if(!empty($rtmp_url)){
-        if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$rtmp_url."\"}";
-        $add_comma = true;
-    }   
+        //Detect special conditions devices
+        $iPod = stripos($_SERVER['HTTP_USER_AGENT'], "iPod");
+        $iPhone = stripos($_SERVER['HTTP_USER_AGENT'], "iPhone");
+        $iPad = stripos($_SERVER['HTTP_USER_AGENT'], "iPad");
+        $Android = stripos($_SERVER['HTTP_USER_AGENT'], "Android");
+        $webOS = stripos($_SERVER['HTTP_USER_AGENT'], "webOS");
 
-    if(!empty($mp3_url)){
-        if($add_comma) $output .= ",";
-        $output .= "{ file: \"".$mp3_url."\"}";
-        $add_comma = true;
-    }   
-    
-    $output .= " ]}],";
-    
-    if (!empty($mp3_url))
-        $output .= "height: 30, width: 600} );</script>";
-    else if ($iPad) 
-        $output .= "height: 360, width: 600} );</script>";
-    else if ($iPod || $iPhone)
-        $output .= "height: 120, width: 200} );</script>";
-    else
-        $output .= "width: '100%', aspectratio:'16:9', primary: \"html5\"} );</script>";
+        if(empty($mp3_url))$div_class = "videoWrapper";
 
-    
+        $output .= "<div class='".$div_class."'><div id=\"'.$player_id.'\">Loading the player...please</div>&nbsp;</div>";
+        $output .= "<script type=\"text/javascript\">jwplayer(\"'.$player_id.'\").setup({";
+        //$output .= "],";
+        $add_comma = false;    
+        $output .= "playlist: [{ title: \"Play Video\", sources: [ ";
+        if(!empty($smil_url)){
+            //if($add_comma) $output .= ",";
+            $output .= "{ file: \"".$smil_url."\" }";
+            $add_comma = true;
+        }
+
+        if(!empty($m3u8_url)){
+            if($add_comma) $output .= ",";
+            $output .= "{ file: \"".$m3u8_url."\"}";
+            $add_comma = true;
+        }
+
+        if(!empty($rtmp_url)){
+            if($add_comma) $output .= ",";
+            $output .= "{ file: \"".$rtmp_url."\"}";
+            $add_comma = true;
+        }   
+
+        if(!empty($mp3_url)){
+            if($add_comma) $output .= ",";
+            $output .= "{ file: \"".$mp3_url."\"}";
+            $add_comma = true;
+        }   
+
+        $output .= " ]}],";
+
+        if (!empty($mp3_url))
+            $output .= "height: 30, width: 600} );</script>";
+        else if ($iPad) 
+            $output .= "height: 360, width: 600} );</script>";
+        else if ($iPod || $iPhone)
+            $output .= "height: 120, width: 200} );</script>";
+        else
+            $output .= "width: '100%', aspectratio:'16:9', primary: \"html5\"} );</script>";
     return $output;  
 }
  /**
