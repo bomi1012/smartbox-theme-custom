@@ -524,3 +524,25 @@ function hb_get_hot_topics($atts) {
 }
 add_shortcode('hb_hot_topics', 'hb_get_hot_topics');
 
+function show_podcast_section($atts) {  
+    
+    $atts['class'] = 'updates';
+    extract(shortcode_atts(array(
+        'topic' => 'default topic',
+        'mp3_title' => 'default title',
+        'mp3_path' => ''), $atts));
+    
+    $podcast_image = '<img class="alignnone size-full wp-image-5451" src="' . CUSTOM_IMAGES_DIR . 'podcast-icon.png' . '" alt="podcast-icon" width="68" height="72">';
+    $mp3_path = '<p style="padding-top: 1em">' . hb_ui_link(
+                            array(
+                                'class' => "updates_btn btn-large",
+                                'link' => $mp3_path,
+                                'content' => "Прослушать")) . '</p>';
+    
+    $columns = oxy_shortcode_layout( NULL, $podcast_image, 'span2');
+    $columns .= oxy_shortcode_layout( NULL, '<strong>Тема: ' . $topic . '</strong> <br> ' . $mp3_title, 'span8');
+    $columns .= oxy_shortcode_layout( NULL, $mp3_path, 'span2');
+
+    return oxy_shortcode_section($atts , oxy_shortcode_row(NULL, $columns, NULL ));
+}
+add_shortcode('show_podcast', 'show_podcast_section');
