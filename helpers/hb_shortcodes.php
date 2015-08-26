@@ -535,7 +535,7 @@ function show_podcast_section($atts) {
     $podcast_image = '<img class="alignnone size-full wp-image-5451" src="' . CUSTOM_IMAGES_DIR . 'podcast-icon.png' . '" alt="podcast-icon" width="68" height="72">';
     $mp3_path = '<p style="padding-top: 1em">' . hb_ui_link(
                             array(
-                                'class' => "updates_btn btn-large",
+                                'class' => "updates_btn size=btn-large",
                                 'link' => $mp3_path,
                                 'content' => "Прослушать")) . '</p>';
     
