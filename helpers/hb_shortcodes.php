@@ -541,7 +541,7 @@ function show_podcast_section($atts) {
         
     $columns =  '<!-- mp3_path in form mp3/path_to_mp3/name.mp3 -->';
     $columns .= oxy_shortcode_layout( NULL, $podcast_image, 'span2');
-    $columns .= oxy_shortcode_layout( NULL, '<strong>Тема: ' . $topic . '</strong> <br> ' . $mp3_title . $showAudio, 'span8');
+    $columns .= oxy_shortcode_layout( NULL, '<strong>' . $topic . '</strong> <br> ' . $mp3_title . $showAudio, 'span8');
     $columns .= oxy_shortcode_layout( NULL, $mp3, 'span2');
     
     return oxy_shortcode_section($atts , $columns);
