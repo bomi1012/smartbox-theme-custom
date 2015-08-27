@@ -281,7 +281,7 @@ function hb_get_jw_player_for_video_church($post, $mp3 = NULL){
         $output .= " ]}],";
 
         if (!empty($mp3_url))
-            $output .= "height: 30, width: 600} );</script>";
+            $output .= "height: 30, width: 600, autostart: true} );</script>";
         else if ($iPad) 
             $output .= "height: 360, width: 600} );</script>";
         else if ($iPod || $iPhone)
