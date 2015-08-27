@@ -536,14 +536,13 @@ function show_podcast_section($atts) {
     $podcast_image = '<img class="alignnone size-full wp-image-5451" src="' . CUSTOM_IMAGES_DIR . 'podcast-icon.png' . '" alt="podcast-icon" width="68" height="72">';
     $mp3 = '<p style="padding-top: 1em"><span id="audioSwitch" style="cursor: pointer" class="updates_btn size=btn-large">Прослушать</span></p>';
     
-    $showAudio .= "<div id='showAudio' class='hidden'>" . 
+    $showAudio .= "<div id='showAudio' class='hidden top075em'>" . 
             hb_get_jw_player_for_video_church($post, "rtmp://46.4.85.100:1935/vod/mp3:" . $mp3_path) . "</div>";
         
     $columns =  '<!-- mp3_path in form mp3/path_to_mp3/name.mp3 -->';
     $columns .= oxy_shortcode_layout( NULL, $podcast_image, 'span2');
     $columns .= oxy_shortcode_layout( NULL, '<strong>Тема: ' . $topic . '</strong> <br> ' . $mp3_title . $showAudio, 'span8');
     $columns .= oxy_shortcode_layout( NULL, $mp3, 'span2');
-    
     
     return oxy_shortcode_section($atts , $columns);
 }
