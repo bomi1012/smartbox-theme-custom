@@ -16,7 +16,7 @@ $allow_comments = oxy_get_option('site_comments');
                 </div>
                 <?php 
                  the_title('<h1>', '</h1>');
-                 echo hb_ui_video_content($post); ?>
+                 echo hb_ui_video_content($post, 'span12'); ?>
                 <?php oxy_wp_link_pages(array('before' => '<div class="pagination pagination-centered">', 'after' => '</div>')); ?>
                 <?php echo hb_ui_related_posts(get_the_ID()); ?>
                 <?php if ($allow_comments == 'posts' || $allow_comments == 'all') comments_template('', true); ?>

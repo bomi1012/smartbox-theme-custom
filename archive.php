@@ -3,7 +3,7 @@
  * Displays a tag archive
 */
 
-get_header();
+//get_header();
 if( is_day() ) {
     $title = __( 'Day', THEME_FRONT_TD );
     $sub = get_the_date( 'j M Y' );
