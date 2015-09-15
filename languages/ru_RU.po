@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Smartbox Frontend Translation File 1.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-18 15:09+0300\n"
-"PO-Revision-Date: 2015-07-11 21:46+0100\n"
+"PO-Revision-Date: 2015-09-15 06:44+0100\n"
 "Last-Translator: Mihail <mihon_82@rambler.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru_RU\n"
@@ -307,3 +307,7 @@ msgstr "Опубликовано"
 #: build/tag.php:15
 msgid "Sermons_to_the_topic"
 msgstr "Проповеди на данную тему"
+
+#: build/tag.php:15
+msgid "listen"
+msgstr "Прослушать"

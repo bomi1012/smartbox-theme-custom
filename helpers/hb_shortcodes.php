@@ -534,7 +534,8 @@ function show_podcast_section($atts) {
         'mp3_path' => ''), $atts));
     
     $podcast_image = '<img class="alignnone size-full wp-image-5451" src="' . CUSTOM_IMAGES_DIR . 'podcast-icon.png' . '" alt="podcast-icon" width="68" height="72">';
-    $mp3 = '<p style="padding-top: 1em"><span id="audioSwitch" style="cursor: pointer" class="updates_btn size=btn-large">Прослушать</span></p>';
+    $mp3 = '<p style="padding-top: 1em"><span id="audioSwitch" style="cursor: pointer" class="updates_btn size=btn-large">'
+            . __('listen', THEME_FRONT_TD) .  '</span></p>';
     
     $showAudio .= "<div id='showAudio' class='hidden top075em'>" . 
             hb_get_jw_player_for_video_church($post, "rtmp://46.4.85.100:1935/vod/mp3:" . $mp3_path) . "</div>";
