@@ -42,7 +42,7 @@ var markers = [
     //USA
     ['Seattle, WA', 47.60621, -122.33207, ICON_PATH + images.BLUE],
     ['Charlotte, NC', 35.22709, -80.84313, ICON_PATH + images.BLUE],
-    ['Jacksonville, FL', 30.33218, -81.65565, ICON_PATH + images.BLUE]
+    ['Jacksonville, FL', 30.33218, -81.65565, ICON_PATH + images.BLUE],
     ['New York, Brighton Beach 14', 40.61867, -74.00554, ICON_PATH + images.BLUE]
 ];
 var styles = [
