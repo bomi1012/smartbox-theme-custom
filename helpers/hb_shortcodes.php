@@ -548,3 +548,69 @@ function show_podcast_section($atts) {
     return oxy_shortcode_section($atts , $columns);
 }
 add_shortcode('show_podcast', 'show_podcast_section');
+
+function hb_navigation_panel_topics($atts) {
+    // setup options
+    extract(shortcode_atts(array(
+        'title' => '',
+        'style' => '',
+        'class'=>'', 
+        'parent'=>''), $atts));
+    
+    
+    $taxonomy_name = "teaching_topics";
+    $post_type = "oxy_content";
+    if(empty($parent)) $parent = 0;
+    if(empty($style)) $style = "font-size:1.5em;";
+    if(empty($class)) $class = "chapter";
+    if(empty($title)) $title = "Темы";
+    $args = array(
+        'taxonomy' => $taxonomy_name,
+        'parent' => $parent
+    );
+    $top_level_topics = get_categories($args);
+    $content = "[section title=\"" . $title . "\" ]";
+    $counter = 0;
+    $row_counter = 0;
+    foreach ($top_level_topics as $top_level_topic) {
+        $counter = $counter + 1;
+        if ($row_counter == 0)
+            $content = $content . "[row]";
+        $row_counter = $row_counter + 1;
+        $content = $content . "<div class=\"" . $class . "\">[span6]<p class=\"tag\">" . $counter . "</p>";
+        $content = $content . "[accordions]";
+        $content = $content . "[accordion title=\"" . $top_level_topic->name . "\" style=" . $style . "]";
+        $args = array(
+            'taxonomy' => $taxonomy_name,
+            'parent' => $top_level_topic->term_id
+        );
+        $topics = get_categories($args);
+        foreach ($topics as $taxonomy_topic) {
+            $posts_in_category = get_posts(array(
+                'showposts' => -1,
+                'post_type' => $post_type,
+                'tax_query' => array(array(
+                        'taxonomy' => $taxonomy_name,
+                        'field' => 'slug',
+                        'terms' => $taxonomy_topic->slug)
+                )
+            ));
+            $count = count($posts_in_category);
+            //link to each topic  
+            $link = get_term_link($taxonomy_topic->slug, $taxonomy_name);
+            $content = $content . "<table class=\"table\"><tbody><tr><td>";
+            $content = $content . "<a href=\"" . $link . "\">" . $taxonomy_topic->name . "</a></td>";
+            $content = $content . "<td>" . $count . "</td></tr></tbody></table>";
+        }
+        $content = $content . "[/accordion]";
+        $content = $content . "[/accordions] [/span6]</div>";
+        if ($row_counter === 2) {
+            $content = $content . "[/row]";
+            $row_counter = 0;
+        }
+    }
+    $content = $content . "[/section]";
+    return do_shortcode($content);
+}
+
+add_shortcode('hb_navigation_panel_topics', 'hb_navigation_panel_topics');
