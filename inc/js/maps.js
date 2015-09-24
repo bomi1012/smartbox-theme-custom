@@ -31,6 +31,7 @@ var markers = [
     ['Krasnojarsk', 56.01528, 92.87909, ICON_PATH + images.ORANGE],
     ['Severouralsk', 60.15444, 59.95639, ICON_PATH + images.ORANGE],
     ['Kandalaksha', 67.15000, 32.40000, ICON_PATH + images.ORANGE],
+    ['Tomsk', 56.50104, 84.99245, ICON_PATH + images.ORANGE],
     //Ukraina
     ['Kiev', 50.45010, 30.52340, ICON_PATH + images.PURPURLE], 
     ['Odessa', 46.48253, 30.72331, ICON_PATH + images.PURPURLE],
